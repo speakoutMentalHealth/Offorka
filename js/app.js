@@ -29,7 +29,7 @@ const routes = {
 
 function directionFromDelta(dx, dy) {
   const distance = Math.hypot(dx, dy);
-  if (distance < 24) return null;
+  if (distance < 22) return null;
   const angle = Math.atan2(dy, dx) * 180 / Math.PI;
   if (angle >= -45 && angle <= 45) return 'right';
   if (angle > 45 && angle < 135) return 'down';
@@ -42,7 +42,7 @@ function setActive(direction) {
   document.body.dataset.activeDirection = direction || '';
   nodes.forEach(node => node.classList.toggle('active', node.dataset.direction === direction));
   if (direction && direction !== lastHaptic && navigator.vibrate) {
-    navigator.vibrate(8);
+    navigator.vibrate(10);
     lastHaptic = direction;
   }
 }
@@ -52,17 +52,19 @@ function moveControl(clientX, clientY) {
   const rawDx = clientX - startX;
   const rawDy = clientY - startY;
   const direction = directionFromDelta(rawDx, rawDy);
-  const maxTravel = Math.min(46, Math.max(30, window.innerWidth * 0.095));
+  const maxTravel = Math.min(58, Math.max(38, window.innerWidth * 0.12));
   const distance = Math.hypot(rawDx, rawDy) || 1;
   const eased = Math.min(maxTravel, distance) / distance;
   const dx = rawDx * eased;
   const dy = rawDy * eased;
 
-  control.style.transform = `translate3d(${dx}px, ${dy}px, 0) rotateX(${-dy / 7}deg) rotateY(${dx / 7}deg)`;
-  control.style.setProperty('--x', `${50 + dx * 0.9}%`);
-  control.style.setProperty('--y', `${34 + dy * 0.9}%`);
-  if (hub) hub.style.setProperty('--tilt-x', `${dx / 22}deg`);
-  if (hub) hub.style.setProperty('--tilt-y', `${-dy / 22}deg`);
+  control.style.transform = `translate3d(${dx}px, ${dy}px, 0) rotateX(${-dy / 8}deg) rotateY(${dx / 8}deg)`;
+  control.style.setProperty('--x', `${50 + dx * 0.75}%`);
+  control.style.setProperty('--y', `${34 + dy * 0.75}%`);
+  if (hub) {
+    hub.style.setProperty('--tilt-x', `${dx / 24}deg`);
+    hub.style.setProperty('--tilt-y', `${-dy / 24}deg`);
+  }
   setActive(direction);
 }
 
@@ -75,11 +77,11 @@ function resetControl() {
   }
 }
 
-function openSelected() {
-  if (!activeDirection || !routes[activeDirection]) return;
-  const target = nodes.find(node => node.dataset.direction === activeDirection);
+function openSelected(direction) {
+  if (!direction || !routes[direction]) return;
+  const target = nodes.find(node => node.dataset.direction === direction);
   if (target) target.classList.add('launching');
-  setTimeout(() => { window.location.href = routes[activeDirection]; }, 130);
+  setTimeout(() => { window.location.href = routes[direction]; }, 145);
 }
 
 if (control) {
@@ -105,10 +107,8 @@ if (control) {
     document.body.classList.remove('is-dragging');
     const selected = activeDirection;
     resetControl();
-    if (selected) {
-      openSelected();
-    }
-    setTimeout(() => setActive(null), selected ? 160 : 0);
+    if (selected) openSelected(selected);
+    setTimeout(() => setActive(null), selected ? 180 : 0);
   }
 
   window.addEventListener('pointerup', finishDrag);
@@ -128,12 +128,12 @@ if (canvas) {
     canvas.width = innerWidth * devicePixelRatio;
     canvas.height = innerHeight * devicePixelRatio;
     ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
-    particles = Array.from({ length: 54 }, () => ({
+    particles = Array.from({ length: 58 }, () => ({
       x: Math.random() * innerWidth,
       y: Math.random() * innerHeight,
-      r: Math.random() * 1.5 + .35,
+      r: Math.random() * 1.35 + .35,
       s: Math.random() * .28 + .06,
-      o: Math.random() * .45 + .18
+      o: Math.random() * .42 + .16
     }));
   }
   function animate() {
@@ -141,7 +141,7 @@ if (canvas) {
     particles.forEach(p => {
       p.y -= p.s;
       if (p.y < -5) { p.y = innerHeight + 5; p.x = Math.random() * innerWidth; }
-      ctx.fillStyle = `rgba(160,210,255,${p.o})`;
+      ctx.fillStyle = `rgba(170,220,255,${p.o})`;
       ctx.beginPath();
       ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
       ctx.fill();
