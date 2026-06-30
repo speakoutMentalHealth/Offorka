@@ -57,10 +57,9 @@
           <small>Schedule a session and take the first step</small>
         </a>
 
-        <div class="axis axis-up">↑</div><div class="axis axis-left">←</div><div class="axis axis-right">→</div><div class="axis axis-down">↓</div>
-
         <button class="portrait-control" id="portraitControl" aria-label="Drag center portrait like a joystick to select a service">
-          <img src="assets/images/jerry-profile.png" alt="Jerry Nnamdi Offorka" />
+          <img src="assets/images/jerry-profile.png" alt="Jerry Nnamdi Offorka" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+          <span class="portrait-fallback">JO</span>
           <span class="portrait-glass"></span>
         </button>
       </div>

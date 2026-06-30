@@ -1,20 +1,19 @@
-# Jerry OS V9 Exact Premium Home
+# Jerry OS V10 Compact Premium
 
-## Replace photos
-- Main portrait: `assets/images/jerry-profile.png`
+This build corrects the oversized/disorganized V9 homepage.
 
-Use the same filename to update the portrait automatically.
+## Key fixes
+- Smaller, aligned orbital hub
+- Central portrait remains visible and premium
+- Four service nodes now fit inside mobile browser width
+- Dock remains fixed at the bottom
+- Background still supports city + Jerry portrait atmosphere
+- Broken image fallback now shows JO instead of browser question marks
 
-## Main files
-- `index.html`
-- `css/style.css`
-- `js/main.js`
+## Replace photo
+Use this path exactly:
 
-## Service routing
-- Public Speaking → `speaking.html`
-- Consultation → `consulting.html`
-- Books & Media → `media.html`
-- Book an Appointment → `booking.html`
+`assets/images/jerry-profile.png`
 
-## External placeholders
-Search for `https://speakoutmentalhealth.org` and replace with exact SpeakOut pages where needed.
+## Edit links
+Update links inside each HTML file or the launcher/dock in `index.html`.
