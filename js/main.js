@@ -23,4 +23,3 @@ document.addEventListener('keydown', event => {
 themeToggle.addEventListener('click', () => {
   document.body.classList.toggle('light');
 });
-
