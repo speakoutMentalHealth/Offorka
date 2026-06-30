@@ -1,19 +1,17 @@
-# Jerry OS V10 Compact Premium
+# Jerry OS V11 - Premium App Homepage
 
-This build corrects the oversized/disorganized V9 homepage.
+Focus: homepage/index only, with app-style fixed viewport, cleaner service pillars, properly aligned service nodes, and joystick navigation.
 
-## Key fixes
-- Smaller, aligned orbital hub
-- Central portrait remains visible and premium
-- Four service nodes now fit inside mobile browser width
-- Dock remains fixed at the bottom
-- Background still supports city + Jerry portrait atmosphere
-- Broken image fallback now shows JO instead of browser question marks
+## Service directions
+- Drag up: Public Speaking -> speaking.html
+- Drag left: Leadership & Training -> leadership.html
+- Drag right: Books & Media -> media.html
+- Drag down: Book Appointment / Mental Health Consultation -> booking.html
 
 ## Replace photo
-Use this path exactly:
+Replace this file and keep the same filename:
 
 `assets/images/jerry-profile.png`
 
-## Edit links
-Update links inside each HTML file or the launcher/dock in `index.html`.
+## Files to upload to GitHub Pages
+Upload the full folder contents.
