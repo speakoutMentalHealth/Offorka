@@ -3,84 +3,95 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#050816" />
   <title>Jerry Nnamdi Ofoka | Mental Health Consultant</title>
+  <meta name="description" content="Jerry Nnamdi Ofoka — Founder of SpeakOut Mental Health Outreach, Mental Health Consultant, Speaker, Author and Advocate." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <main class="app-shell">
+  <main class="app-shell" id="app">
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <div class="stars" aria-hidden="true"></div>
+
     <header class="topbar">
-      <button class="icon-btn menu-btn" aria-label="Open menu">
-        <span></span><span></span><span></span>
+      <button class="icon-btn launcher-btn" id="launcherBtn" aria-label="Open menu">
+        <span></span><span></span><span></span><span></span>
       </button>
 
-      <div class="brand-block">
-        <p class="eyebrow">Official Profile</p>
+      <div class="brand-lockup">
         <h1>Jerry Nnamdi Ofoka</h1>
-        <p>Mental Health Consultant</p>
+        <p>Founder • Mental Health Consultant</p>
       </div>
 
-      <div class="top-actions">
-        <button class="icon-btn theme-toggle" aria-label="Toggle glow mode">☾</button>
-        <button class="icon-btn profile-btn" aria-label="Profile">♙</button>
-      </div>
+      <button class="icon-btn mode-btn" id="modeBtn" aria-label="Toggle night mode">☾</button>
     </header>
 
-    <section class="hero-console" aria-label="Interactive service console">
-      <div class="ambient-ring ring-one"></div>
-      <div class="ambient-ring ring-two"></div>
-      <div class="ambient-ring ring-three"></div>
+    <section class="hero" aria-label="Jerry interactive hub">
+      <div class="orbit-wrap" id="orbitWrap">
+        <div class="orbital-ring ring-a"></div>
+        <div class="orbital-ring ring-b"></div>
+        <div class="orbital-ring ring-c"></div>
 
-      <a class="service-orb orb-top" data-direction="up" href="https://speakoutmentalhealth.org" target="_blank" rel="noopener">
-        <span class="service-icon">♚</span>
-        <strong>Speaking</strong>
-      </a>
+        <a class="service-node node-up blue" data-direction="up" href="speaking.html" aria-label="Speaking">
+          <span class="node-icon">🎤</span>
+          <span>Speaking</span>
+        </a>
 
-      <a class="service-orb orb-left" data-direction="left" href="https://speakoutmentalhealth.org" target="_blank" rel="noopener">
-        <span class="service-icon">☏</span>
-        <strong>Consulting</strong>
-      </a>
+        <a class="service-node node-left purple" data-direction="left" href="consulting.html" aria-label="Consulting">
+          <span class="node-icon">🤝</span>
+          <span>Consulting</span>
+        </a>
 
-      <a class="service-orb orb-right" data-direction="right" href="https://speakoutmentalhealth.org" target="_blank" rel="noopener">
-        <span class="service-icon">▱</span>
-        <strong>Books<br>& Media</strong>
-      </a>
+        <a class="service-node node-right teal" data-direction="right" href="media.html" aria-label="Books and Media">
+          <span class="node-icon">📚</span>
+          <span>Books & Media</span>
+        </a>
 
-      <a class="service-orb orb-bottom" data-direction="down" href="https://speakoutmentalhealth.org" target="_blank" rel="noopener">
-        <span class="service-icon">▣</span>
-        <strong>Book<br>Appointment</strong>
-      </a>
+        <a class="service-node node-down gold" data-direction="down" href="https://speakoutmentalhealth.org" aria-label="Book Appointment">
+          <span class="node-icon">📅</span>
+          <span>Appointment</span>
+        </a>
 
-      <div class="connection-line line-up"></div>
-      <div class="connection-line line-down"></div>
-      <div class="connection-line line-left"></div>
-      <div class="connection-line line-right"></div>
-
-      <div class="control-stage" id="controlStage">
-        <div class="scan-glow"></div>
-        <button class="portrait-pad" id="portraitPad" aria-label="Interactive control pad. Drag or tap up, down, left, or right.">
-          <span class="portrait-ring"></span>
-          <img src="images/jerry-profile.jpg" alt="Jerry Nnamdi Ofoka" onerror="this.src='images/profile-placeholder.svg'" />
-          <span class="joystick-knob" id="joystickKnob"></span>
-          <span class="direction-hint hint-up">↑</span>
-          <span class="direction-hint hint-down">↓</span>
-          <span class="direction-hint hint-left">←</span>
-          <span class="direction-hint hint-right">→</span>
-        </button>
+        <div class="hub-stage" id="hubStage">
+          <div class="glow-trail" id="glowTrail"></div>
+          <div class="hub-rings">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <button class="portrait-joystick" id="joystick" aria-label="Interactive Jerry hub. Drag up, down, left, or right.">
+            <img src="images/jerry-profile.jpg" alt="Jerry Nnamdi Ofoka" onerror="this.style.display='none'; this.parentElement.classList.add('no-photo');" />
+            <span class="photo-placeholder">JNO</span>
+          </button>
+        </div>
       </div>
 
-      <p class="micro-copy" id="microCopy">Drag the centre control or tap a direction</p>
+      <div class="service-preview" id="servicePreview">
+        <span class="preview-kicker">Move the hub</span>
+        <strong>Choose a direction</strong>
+      </div>
     </section>
 
-    <nav class="bottom-nav" aria-label="Primary navigation">
-      <a class="active" href="index.html"><span>⌂</span><small>Home</small></a>
-      <a href="#about"><span>♙</span><small>About</small></a>
-      <a href="mailto:speaakout@gmail.com"><span>✉</span><small>Contact</small></a>
-      <a href="https://speakoutmentalhealth.org" target="_blank" rel="noopener"><span>◎</span><small>SpeakOut</small></a>
+    <nav class="bottom-dock" aria-label="Main navigation">
+      <a class="active" href="index.html"><span>⌂</span><b>Home</b></a>
+      <a href="about.html"><span>◌</span><b>About</b></a>
+      <a href="index.html#hub"><span>◎</span><b>Hub</b></a>
+      <a href="https://speakoutmentalhealth.org"><span>🌍</span><b>SpeakOut</b></a>
+      <a href="contact.html"><span>✉</span><b>Contact</b></a>
     </nav>
+
+    <div class="launcher-panel" id="launcherPanel" aria-hidden="true">
+      <button class="close-launcher" id="closeLauncher" aria-label="Close menu">×</button>
+      <div class="launcher-grid">
+        <a href="about.html">About</a>
+        <a href="speaking.html">Speaking</a>
+        <a href="consulting.html">Consulting</a>
+        <a href="media.html">Books & Media</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://speakoutmentalhealth.org">SpeakOut</a>
+      </div>
+    </div>
   </main>
 
   <script src="js/main.js"></script>
