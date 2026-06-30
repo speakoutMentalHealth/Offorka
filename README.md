@@ -1,25 +1,30 @@
-# Jerry OS V6
+# Jerry OS V8 Premium Mobile Hub
 
-Mobile-first GitHub Pages bundle for Jerry Nnamdi Offorka.
-
-## Replace photo
-Put Jerry's image here:
+## Replace Jerry's photo
+Put your image here and keep the exact filename:
 
 `images/jerry-profile.jpg`
 
-## Replace placeholder links
-Search for these placeholders and replace them:
+The same image is used for:
+- the centre joystick portrait
+- the soft background portrait layer
 
-- `#INSTAGRAM-LINK-HERE`
-- `#FACEBOOK-LINK-HERE`
-- `#X-LINK-HERE`
-- `#LIBRARY-LINK-HERE`
-- `#PODCAST-LINK-HERE`
-- `#YOUTUBE-LINK-HERE`
-- `#CALENDAR-BOOKING-LINK-HERE`
+## Main files
+- `index.html` = premium home hub
+- `css/style.css` = full styling
+- `js/app.js` = joystick + particles + menu
+- `about.html` = brief profile
+- `consulting.html` = consulting + social placeholders
+- `media.html` = books/media + library placeholders
+- `booking.html` = calendar-style booking placeholder
+- `contact.html` = contact links
 
-## Current links included
-- WhatsApp: https://wa.me/2348118103510
-- LinkedIn: https://www.linkedin.com/in/speakout/
-- SpeakOut: https://speakoutmentalhealth.org
-- CV: docs/jerry-offorka-cv.pdf
+## Placeholder links to update
+Search for `href="#"` and replace with real links:
+- calendar booking link
+- digital library link
+- podcast/video links
+- Instagram/Facebook/X links
+
+## WhatsApp
+Current WhatsApp link: `https://wa.me/2348118103510`

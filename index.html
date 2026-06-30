@@ -12,6 +12,7 @@
 </head>
 <body class="home-screen">
   <div class="ambient" aria-hidden="true">
+    <div class="portrait-bg"></div>
     <span class="orb orb-a"></span><span class="orb orb-b"></span><span class="orb orb-c"></span>
     <canvas id="particles"></canvas>
   </div>
@@ -29,24 +30,29 @@
     </header>
 
     <section class="hub" id="hub" aria-label="Jerry OS Home Hub">
+      <div class="hero-line">
+        <strong>Transforming Conversations Into Hope</strong>
+        <span>Drag the portrait to open a service</span>
+      </div>
+
       <div class="halo" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
       <div class="axis-lines" aria-hidden="true"><span class="axis-up"></span><span class="axis-right"></span><span class="axis-down"></span><span class="axis-left"></span></div>
 
       <a class="service-node node-speaking" data-direction="up" href="speaking.html" aria-label="Speaking">
         <svg viewBox="0 0 24 24"><path d="M12 3a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><path d="M12 18v3"/><path d="M8 21h8"/></svg>
-        <span>Speaking</span>
+        <span>Speaking</span><small>Inspire</small>
       </a>
       <a class="service-node node-consulting" data-direction="left" href="consulting.html" aria-label="Consulting">
         <svg viewBox="0 0 24 24"><path d="M8 4h8l2 3v13H6V7l2-3Z"/><path d="M9 12h6"/><path d="M9 16h4"/><path d="M8 7h8"/></svg>
-        <span>Consulting</span>
+        <span>Consulting</span><small>Strategy</small>
       </a>
       <a class="service-node node-media" data-direction="right" href="media.html" aria-label="Books and Media">
         <svg viewBox="0 0 24 24"><path d="M5 4h10a4 4 0 0 1 4 4v12H9a4 4 0 0 0-4 0V4Z"/><path d="M5 4v16"/></svg>
-        <span>Books &amp; Media</span>
+        <span>Books &amp; Media</span><small>Library</small>
       </a>
       <a class="service-node node-booking" data-direction="down" href="booking.html" aria-label="Book Appointment">
         <svg viewBox="0 0 24 24"><path d="M7 3v4"/><path d="M17 3v4"/><path d="M4 8h16"/><path d="M5 5h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/><path d="M8 12h.01M12 12h.01M16 12h.01M8 16h.01M12 16h.01"/></svg>
-        <span>Book</span>
+        <span>Book</span><small>Connect</small>
       </a>
 
       <button class="portrait-control" id="portraitControl" aria-label="Drag Jerry portrait like a joystick to select a service">
@@ -56,11 +62,6 @@
         <span class="portrait-reflection"></span>
         <span class="shine"></span>
       </button>
-
-      <div class="gesture-tip" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m7 8 5-5 5 5"/><path d="M12 21v-3"/><path d="M4 12h3"/><path d="M17 12h3"/></svg>
-        <span>Drag the portrait</span>
-      </div>
     </section>
   </main>
 
