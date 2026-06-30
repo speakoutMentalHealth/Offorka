@@ -43,28 +43,18 @@
         <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15Z"/></svg>
         <span>Books & Media</span>
       </div>
-      <div class="service-node node-booking" data-service="booking" data-url="https://speakoutmentalhealth.org">
+      <div class="service-node node-booking" data-service="booking" data-url="booking.html">
         <svg viewBox="0 0 24 24"><path d="M7 3v4m10-4v4M4 9h16M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm3 8h.01M12 13h.01M16 13h.01M8 17h.01M12 17h.01"/></svg>
         <span>Book</span>
       </div>
 
       <div class="halo" aria-hidden="true"><i></i><i></i><i></i></div>
 
-     <button class="portrait-control" id="portraitControl" aria-label="Drag Jerry portrait to select a service">
-    <img
-        id="portraitImage"
-        src="images/jerry-profile.jpg"
-        alt="Jerry Nnamdi Offorka"
-    />
-
-    <div class="portrait-overlay"></div>
-
-    <span class="portrait-fallback">JO</span>
-
-    <div class="portrait-glow"></div>
-
-    <div class="portrait-reflection"></div>
-</button>
+      <button class="portrait-control" id="portraitControl" aria-label="Drag Jerry portrait to select a service">
+        <img src="images/jerry-profile.jpg" alt="Jerry Nnamdi Offorka" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+        <span class="portrait-fallback">JNO</span>
+        <span class="shine"></span>
+      </button>
 
       <p class="hint" id="hubHint">Touch the portrait and move</p>
     </section>
@@ -80,7 +70,7 @@
 
   <div class="launcher" id="launcher" aria-hidden="true">
     <button class="launcher-close" aria-label="Close launcher"></button>
-    <a href="about.html">About</a><a href="speaking.html">Speaking</a><a href="consulting.html">Consulting</a><a href="media.html">Books & Media</a><a href="contact.html">Contact</a><a href="https://speakoutmentalhealth.org">SpeakOut</a>
+    <a href="about.html">About</a><a href="speaking.html">Speaking</a><a href="consulting.html">Consulting</a><a href="media.html">Books & Media</a><a href="contact.html">Contact</a><a href="booking.html">Book Appointment</a><a href="https://speakoutmentalhealth.org">SpeakOut</a>
   </div>
 
   <script src="js/main.js"></script>

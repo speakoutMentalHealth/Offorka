@@ -1,23 +1,33 @@
-# Jerry OS 2.0 Production Build
+# Jerry OS v5
 
-A mobile-first, GitHub Pages-ready personal brand app for **Jerry Nnamdi Offorka**.
+Premium mobile-first personal brand app for Jerry Nnamdi Offorka.
+
+## What changed
+- Home screen is fixed to the phone viewport: no vertical scrolling on the hub.
+- Bottom dock stays fixed.
+- Hub buttons are smaller and positioned to fit mobile screens.
+- Booking now opens `booking.html` instead of going straight to SpeakOut.
+- Consulting includes placeholder social links.
+- Books & Media includes placeholder library/book/podcast links.
+- Booking includes static available-time buttons, form placeholders, WhatsApp, calendar, email, and video-call placeholders.
 
 ## Replace photo
-Put Jerry's real portrait here:
+Place Jerry's image at:
 
 `images/jerry-profile.jpg`
 
-Keep the filename exactly the same.
+## Replace links
+Search for these placeholders and replace them:
 
-## Files
-- `index.html` — interactive hub homepage
-- `about.html`
-- `speaking.html`
-- `consulting.html`
-- `media.html`
-- `contact.html`
-- `css/style.css`
-- `js/main.js`
+- `#LINKEDIN-LINK-HERE`
+- `#INSTAGRAM-LINK-HERE`
+- `#FACEBOOK-LINK-HERE`
+- `#X-LINK-HERE`
+- `#YOUTUBE-LINK-HERE`
+- `#LIBRARY-LINK-HERE`
+- `#YOUTUBE-OR-PODCAST-LINK-HERE`
+- `#BOOK-PURCHASE-LINK-HERE`
+- `#CALENDAR-BOOKING-LINK-HERE`
+- `#VIDEO-CALL-LINK-HERE`
 
-## Deploy on GitHub Pages
-Upload everything in this folder to the repository root, then enable GitHub Pages from the repository settings.
+For live availability, use Calendly, Google Calendar Appointment Schedule, TidyCal, or the SpeakOut booking page.
