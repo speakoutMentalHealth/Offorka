@@ -1,94 +1,67 @@
-const joystick = document.getElementById('joystick');
-const nodes = [...document.querySelectorAll('.service-node')];
-const preview = document.getElementById('servicePreview');
-const glow = document.getElementById('glowTrail');
+const core = document.getElementById('core');
+const hint = document.getElementById('hint');
+const nodes = [...document.querySelectorAll('.node')];
 const launcherBtn = document.getElementById('launcherBtn');
 const launcherPanel = document.getElementById('launcherPanel');
 const closeLauncher = document.getElementById('closeLauncher');
-const modeBtn = document.getElementById('modeBtn');
-
-const services = {
-  up: { label: 'Speaking', href: 'speaking.html', theme: 'theme-blue', text: 'Invite Jerry to speak' },
-  left: { label: 'Consulting', href: 'consulting.html', theme: 'theme-purple', text: 'Consulting & strategy' },
-  right: { label: 'Books & Media', href: 'media.html', theme: 'theme-teal', text: 'Books, podcast & media' },
-  down: { label: 'Appointment', href: 'https://speakoutmentalhealth.org', theme: 'theme-gold', text: 'Book an appointment' }
-};
+const themeBtn = document.getElementById('themeBtn');
 
 let dragging = false;
-let startX = 0;
-let startY = 0;
-let activeDirection = null;
+let startX = 0, startY = 0;
+let currentDir = null;
 const maxMove = 30;
-const trigger = 25;
+const threshold = 22;
 
 function clamp(v, min, max){ return Math.max(min, Math.min(max, v)); }
-function clearTheme(){ document.body.classList.remove('theme-blue','theme-purple','theme-teal','theme-gold'); }
-function setActive(direction){
-  if(activeDirection === direction) return;
-  activeDirection = direction;
-  nodes.forEach(n => n.classList.toggle('active', n.dataset.direction === direction));
-  clearTheme();
-  if(direction && services[direction]){
-    document.body.classList.add(services[direction].theme);
-    preview.innerHTML = `<span class="preview-kicker">Selected</span><strong>${services[direction].text}</strong>`;
-    if(navigator.vibrate) navigator.vibrate(12);
-  } else {
-    preview.innerHTML = `<span class="preview-kicker">Move the hub</span><strong>Choose a direction</strong>`;
-  }
+function dirFromDelta(dx, dy){
+  if(Math.max(Math.abs(dx), Math.abs(dy)) < threshold) return null;
+  return Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
 }
-function directionFrom(dx, dy){
-  if(Math.abs(dx) < trigger && Math.abs(dy) < trigger) return null;
-  if(Math.abs(dx) > Math.abs(dy)) return dx > 0 ? 'right' : 'left';
-  return dy > 0 ? 'down' : 'up';
+function setActive(dir){
+  currentDir = dir;
+  nodes.forEach(n => n.classList.toggle('active', n.dataset.dir === dir));
+  const labels = {up:'Speaking',left:'Consulting',right:'Books & Media',down:'Book Appointment'};
+  hint.textContent = dir ? labels[dir] : 'Touch the centre and move';
+  hint.classList.toggle('active', Boolean(dir));
+  if(dir && navigator.vibrate) navigator.vibrate(8);
 }
-function moveHub(dx, dy){
-  const x = clamp(dx, -maxMove, maxMove);
-  const y = clamp(dy, -maxMove, maxMove);
-  const tiltX = y / 3;
-  const tiltY = -x / 3;
-  joystick.style.transform = `translate(${x}px, ${y}px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.03)`;
-  glow.style.transform = `translate(${x * 1.2}px, ${y * 1.2}px)`;
-  setActive(directionFrom(dx, dy));
-}
-function resetHub(){
-  joystick.style.transform = 'translate(0,0) rotateX(0) rotateY(0) scale(1)';
-  glow.style.transform = 'translate(0,0)';
-  setTimeout(() => { setActive(null); clearTheme(); }, 360);
-}
-
-joystick.addEventListener('pointerdown', e => {
+function start(e){
   dragging = true;
-  joystick.setPointerCapture(e.pointerId);
-  startX = e.clientX;
-  startY = e.clientY;
-});
-joystick.addEventListener('pointermove', e => {
+  core.classList.add('is-dragging');
+  const p = e.touches ? e.touches[0] : e;
+  startX = p.clientX; startY = p.clientY;
+  core.setPointerCapture?.(e.pointerId || 1);
+}
+function move(e){
   if(!dragging) return;
-  moveHub(e.clientX - startX, e.clientY - startY);
-});
-joystick.addEventListener('pointerup', () => {
+  const p = e.touches ? e.touches[0] : e;
+  const dx = clamp(p.clientX - startX, -maxMove, maxMove);
+  const dy = clamp(p.clientY - startY, -maxMove, maxMove);
+  const tiltX = dx / 3;
+  const tiltY = -dy / 3;
+  core.style.transform = `translate(${dx}px, ${dy}px) rotateX(${tiltY}deg) rotateY(${tiltX}deg)`;
+  setActive(dirFromDelta(dx, dy));
+}
+function end(){
+  if(!dragging) return;
   dragging = false;
-  const selected = activeDirection;
-  resetHub();
-  if(selected && services[selected]){
-    setTimeout(() => { window.location.href = services[selected].href; }, 220);
+  core.classList.remove('is-dragging');
+  core.style.transform = '';
+  if(currentDir){
+    const link = document.querySelector(`.node[data-dir="${currentDir}"]`);
+    setTimeout(()=>{ window.location.href = link.href; }, 180);
   }
-});
-joystick.addEventListener('pointercancel', () => { dragging = false; resetHub(); });
+  setTimeout(()=>setActive(null), 260);
+}
 
-nodes.forEach(node => node.addEventListener('click', () => {
-  if(navigator.vibrate) navigator.vibrate(18);
-}));
+core.addEventListener('pointerdown', start);
+window.addEventListener('pointermove', move);
+window.addEventListener('pointerup', end);
+core.addEventListener('touchstart', start, {passive:true});
+window.addEventListener('touchmove', move, {passive:true});
+window.addEventListener('touchend', end);
 
-launcherBtn.addEventListener('click', () => launcherPanel.classList.add('open'));
-closeLauncher.addEventListener('click', () => launcherPanel.classList.remove('open'));
-launcherPanel.addEventListener('click', e => { if(e.target === launcherPanel) launcherPanel.classList.remove('open'); });
-modeBtn.addEventListener('click', () => document.body.classList.toggle('light-mode'));
-
-// Gentle device tilt for supported mobile browsers
-window.addEventListener('deviceorientation', e => {
-  if(dragging || !e.gamma || !e.beta) return;
-  const x = clamp(e.gamma / 3, -8, 8);
-  const y = clamp((e.beta - 45) / 5, -8, 8);
-  joystick.style.transform = `translate(${x}px, ${y}px)`;
-}, true);
+launcherBtn?.addEventListener('click', ()=> launcherPanel.classList.add('open'));
+closeLauncher?.addEventListener('click', ()=> launcherPanel.classList.remove('open'));
+launcherPanel?.addEventListener('click', e => { if(e.target === launcherPanel) launcherPanel.classList.remove('open'); });
+themeBtn?.addEventListener('click', ()=> document.body.classList.toggle('light-mode'));
