@@ -1,5 +1,154 @@
-const launcher=document.getElementById('launcher');document.querySelectorAll('.launcher-toggle').forEach(b=>b.addEventListener('click',()=>launcher?.classList.add('open')));document.querySelectorAll('.launcher-close').forEach(b=>b.addEventListener('click',()=>launcher?.classList.remove('open')));
-const img=document.getElementById('portraitImage');const fb=document.querySelector('.portrait-fallback');if(img){img.addEventListener('error',()=>{img.style.display='none';if(fb)fb.style.display='grid'})}
-const control=document.getElementById('portraitControl');const nodes=[...document.querySelectorAll('.service-node')];let dragging=false,startX=0,startY=0,active=null;function nearest(dx,dy){const adx=Math.abs(dx),ady=Math.abs(dy);if(Math.max(adx,ady)<34)return null;if(ady>adx)return dy<0?'up':'down';return dx<0?'left':'right'}function setActive(dir){active=dir;nodes.forEach(n=>n.classList.toggle('active',n.dataset.direction===dir));}function move(e){if(!dragging)return;const p=e.touches?e.touches[0]:e;const dx=Math.max(-28,Math.min(28,p.clientX-startX));const dy=Math.max(-28,Math.min(28,p.clientY-startY));control.style.transform=`translate(${dx}px,${dy}px) rotateX(${-dy/5}deg) rotateY(${dx/5}deg)`;control.style.setProperty('--x',`${50+dx}%`);control.style.setProperty('--y',`${35+dy}%`);setActive(nearest(dx,dy));}function end(){if(!dragging)return;dragging=false;control.style.transform='translate(0,0)';if(active){const target=nodes.find(n=>n.dataset.direction===active);setTimeout(()=>{location.href=target.href},120)}setActive(null)}if(control){control.addEventListener('pointerdown',e=>{dragging=true;startX=e.clientX;startY=e.clientY;control.setPointerCapture?.(e.pointerId)});window.addEventListener('pointermove',move);window.addEventListener('pointerup',end);}
-const c=document.getElementById('particles');if(c){const ctx=c.getContext('2d');let pts=[];function resize(){c.width=innerWidth;c.height=innerHeight;pts=Array.from({length:50},()=>({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*1.7+.4,s:Math.random()*.35+.08}))}function anim(){ctx.clearRect(0,0,c.width,c.height);ctx.fillStyle='rgba(160,210,255,.55)';pts.forEach(p=>{p.y-=p.s;if(p.y<0)p.y=c.height;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill()});requestAnimationFrame(anim)}resize();addEventListener('resize',resize);anim()}
+const launcher = document.getElementById('launcher');
+document.querySelectorAll('.launcher-toggle').forEach(btn => btn.addEventListener('click', () => launcher?.classList.add('open')));
+document.querySelectorAll('.launcher-close').forEach(btn => btn.addEventListener('click', () => launcher?.classList.remove('open')));
 
+const portraitImage = document.getElementById('portraitImage');
+const fallback = document.querySelector('.portrait-fallback');
+if (portraitImage) {
+  portraitImage.addEventListener('error', () => {
+    portraitImage.style.display = 'none';
+    if (fallback) fallback.style.display = 'grid';
+  });
+}
+
+const control = document.getElementById('portraitControl');
+const hub = document.getElementById('hub');
+const nodes = [...document.querySelectorAll('.service-node')];
+let dragging = false;
+let startX = 0;
+let startY = 0;
+let activeDirection = null;
+let lastHaptic = null;
+
+const routes = {
+  up: 'speaking.html',
+  left: 'consulting.html',
+  right: 'media.html',
+  down: 'booking.html'
+};
+
+function directionFromDelta(dx, dy) {
+  const distance = Math.hypot(dx, dy);
+  if (distance < 24) return null;
+  const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+  if (angle >= -45 && angle <= 45) return 'right';
+  if (angle > 45 && angle < 135) return 'down';
+  if (angle < -45 && angle > -135) return 'up';
+  return 'left';
+}
+
+function setActive(direction) {
+  activeDirection = direction;
+  document.body.dataset.activeDirection = direction || '';
+  nodes.forEach(node => node.classList.toggle('active', node.dataset.direction === direction));
+  if (direction && direction !== lastHaptic && navigator.vibrate) {
+    navigator.vibrate(8);
+    lastHaptic = direction;
+  }
+}
+
+function moveControl(clientX, clientY) {
+  if (!dragging || !control) return;
+  const rawDx = clientX - startX;
+  const rawDy = clientY - startY;
+  const direction = directionFromDelta(rawDx, rawDy);
+  const maxTravel = Math.min(46, Math.max(30, window.innerWidth * 0.095));
+  const distance = Math.hypot(rawDx, rawDy) || 1;
+  const eased = Math.min(maxTravel, distance) / distance;
+  const dx = rawDx * eased;
+  const dy = rawDy * eased;
+
+  control.style.transform = `translate3d(${dx}px, ${dy}px, 0) rotateX(${-dy / 7}deg) rotateY(${dx / 7}deg)`;
+  control.style.setProperty('--x', `${50 + dx * 0.9}%`);
+  control.style.setProperty('--y', `${34 + dy * 0.9}%`);
+  if (hub) hub.style.setProperty('--tilt-x', `${dx / 22}deg`);
+  if (hub) hub.style.setProperty('--tilt-y', `${-dy / 22}deg`);
+  setActive(direction);
+}
+
+function resetControl() {
+  if (!control) return;
+  control.style.transform = 'translate3d(0,0,0) rotateX(0deg) rotateY(0deg)';
+  if (hub) {
+    hub.style.setProperty('--tilt-x', '0deg');
+    hub.style.setProperty('--tilt-y', '0deg');
+  }
+}
+
+function openSelected() {
+  if (!activeDirection || !routes[activeDirection]) return;
+  const target = nodes.find(node => node.dataset.direction === activeDirection);
+  if (target) target.classList.add('launching');
+  setTimeout(() => { window.location.href = routes[activeDirection]; }, 130);
+}
+
+if (control) {
+  control.addEventListener('pointerdown', event => {
+    event.preventDefault();
+    dragging = true;
+    startX = event.clientX;
+    startY = event.clientY;
+    lastHaptic = null;
+    control.setPointerCapture?.(event.pointerId);
+    document.body.classList.add('is-dragging');
+  });
+
+  window.addEventListener('pointermove', event => {
+    if (!dragging) return;
+    event.preventDefault();
+    moveControl(event.clientX, event.clientY);
+  }, { passive: false });
+
+  function finishDrag() {
+    if (!dragging) return;
+    dragging = false;
+    document.body.classList.remove('is-dragging');
+    const selected = activeDirection;
+    resetControl();
+    if (selected) {
+      openSelected();
+    }
+    setTimeout(() => setActive(null), selected ? 160 : 0);
+  }
+
+  window.addEventListener('pointerup', finishDrag);
+  window.addEventListener('pointercancel', () => {
+    dragging = false;
+    resetControl();
+    setActive(null);
+    document.body.classList.remove('is-dragging');
+  });
+}
+
+const canvas = document.getElementById('particles');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  function resize() {
+    canvas.width = innerWidth * devicePixelRatio;
+    canvas.height = innerHeight * devicePixelRatio;
+    ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+    particles = Array.from({ length: 54 }, () => ({
+      x: Math.random() * innerWidth,
+      y: Math.random() * innerHeight,
+      r: Math.random() * 1.5 + .35,
+      s: Math.random() * .28 + .06,
+      o: Math.random() * .45 + .18
+    }));
+  }
+  function animate() {
+    ctx.clearRect(0,0,innerWidth,innerHeight);
+    particles.forEach(p => {
+      p.y -= p.s;
+      if (p.y < -5) { p.y = innerHeight + 5; p.x = Math.random() * innerWidth; }
+      ctx.fillStyle = `rgba(160,210,255,${p.o})`;
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fill();
+    });
+    requestAnimationFrame(animate);
+  }
+  resize();
+  addEventListener('resize', resize);
+  animate();
+}
