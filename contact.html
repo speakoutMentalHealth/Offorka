@@ -1,1 +1,98 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Jerry Nnamdi Offorka - Contact</title><link rel="stylesheet" href="css/style.css"></head><body><main class="page-shell"><section class="page-card"><h1>Contact</h1><p>This page is ready for your final content and links. The homepage service hub now routes here with the updated premium app-style navigation.</p><div class="btn-grid"><a class="btn" href="index.html">Back to Home Hub</a><a class="btn secondary" href="contact.html">Contact Jerry</a></div></section></main><nav class="dock" aria-label="Main navigation"><a href="index.html"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-7h6v7"/></svg><span>Home</span></a><a href="about.html"><svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path d="M4 22a8 8 0 0 1 16 0"/></svg><span>About</span></a><a href="index.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/></svg><span>Hub</span></a><a href="https://speakoutmentalhealth.org"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20"/><path d="M12 2a15 15 0 0 0 0 20"/></svg><span>SpeakOut</span></a><a href="contact.html"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg><span>Contact</span></a></nav></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Jerry Nnamdi Offorka</title>
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body>
+
+<header class="page-header">
+  <a href="index.html" class="back-link">← Back Home</a>
+  <h1>Contact Jerry</h1>
+  <p>Reach out for speaking, consultation, leadership training, media, or partnership enquiries.</p>
+</header>
+
+<main class="container">
+
+  <section class="grid">
+
+    <div class="card">
+      <h2>WhatsApp / Call</h2>
+      <p>Speak directly with the team for appointments, invitations, and urgent enquiries.</p>
+      <a href="https://wa.me/2348118103510" class="btn" target="_blank">Message on WhatsApp</a>
+    </div>
+
+    <div class="card">
+      <h2>Email</h2>
+      <p>Send formal invitations, media requests, partnership letters, or programme details.</p>
+      <a href="mailto:speaaakout@gmail.com" class="btn">Send Email</a>
+    </div>
+
+  </section>
+
+  <section class="card wide">
+
+    <h2>Send a Quick Message</h2>
+
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Your full name" required />
+
+      <input type="tel" id="phone" placeholder="Your WhatsApp number" required />
+
+      <input type="email" id="email" placeholder="Your email address" />
+
+      <select id="reason" required>
+        <option value="">Select enquiry type</option>
+        <option>Speaking Invitation</option>
+        <option>Consultation / Appointment</option>
+        <option>Leadership Training</option>
+        <option>Media Request</option>
+        <option>Partnership</option>
+        <option>General Enquiry</option>
+      </select>
+
+      <textarea id="message" placeholder="Write your message here..." required></textarea>
+
+      <button type="submit">Send via WhatsApp</button>
+    </form>
+
+  </section>
+
+</main>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const email = document.getElementById("email").value;
+  const reason = document.getElementById("reason").value;
+  const message = document.getElementById("message").value;
+
+  const whatsappNumber = "2348118103510";
+
+  const text =
+`Hello Jerry,
+
+I would like to make an enquiry.
+
+Name: ${name}
+WhatsApp: ${phone}
+Email: ${email}
+Enquiry Type: ${reason}
+
+Message:
+${message}`;
+
+  window.open(
+    `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`,
+    "_blank"
+  );
+});
+</script>
+
+</body>
+</html>
