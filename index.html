@@ -50,11 +50,21 @@
 
       <div class="halo" aria-hidden="true"><i></i><i></i><i></i></div>
 
-      <button class="portrait-control" id="portraitControl" aria-label="Drag Jerry portrait to select a service">
-        <img src="images/jerry-profile.jpg" alt="Jerry Nnamdi Offorka" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
-        <span class="portrait-fallback">JNO</span>
-        <span class="shine"></span>
-      </button>
+     <button class="portrait-control" id="portraitControl" aria-label="Drag Jerry portrait to select a service">
+    <img
+        id="portraitImage"
+        src="images/jerry-profile.jpg"
+        alt="Jerry Nnamdi Offorka"
+    />
+
+    <div class="portrait-overlay"></div>
+
+    <span class="portrait-fallback">JO</span>
+
+    <div class="portrait-glow"></div>
+
+    <div class="portrait-reflection"></div>
+</button>
 
       <p class="hint" id="hubHint">Touch the portrait and move</p>
     </section>
