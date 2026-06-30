@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs><radialGradient id="g" cx="50%" cy="38%" r="62%"><stop offset="0" stop-color="#184b9b"/><stop offset="1" stop-color="#06152f"/></radialGradient></defs>
+  <rect width="600" height="600" fill="url(#g)"/>
+  <circle cx="300" cy="220" r="96" fill="#132c58" stroke="#2d8cff" stroke-width="8"/>
+  <path d="M120 560c25-130 110-200 180-200s155 70 180 200" fill="#10254b" stroke="#2d8cff" stroke-width="8"/>
+  <text x="300" y="115" text-anchor="middle" fill="#f5c14f" font-family="Arial" font-size="44">Jerry</text>
+</svg>
