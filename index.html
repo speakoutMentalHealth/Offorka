@@ -3,80 +3,91 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Jerry Nnamdi Offorka | Mental Health Consultant</title>
-  <meta name="description" content="Official personal brand hub for Jerry Nnamdi Offorka, Founder of SpeakOut Mental Health Outreach." />
+  <title>Jerry Nnamdi Offorka</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Great+Vibes&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body class="home-screen">
-  <div class="ambient" aria-hidden="true">
-    <div class="portrait-bg"></div>
-    <span class="orb orb-a"></span><span class="orb orb-b"></span><span class="orb orb-c"></span>
-    <canvas id="particles"></canvas>
-  </div>
+<body class="home-page">
+  <main class="app-shell" aria-label="Jerry Nnamdi Offorka personal brand app">
+    <div class="city-bg" aria-hidden="true"><div class="city-lights"></div></div>
+    <img class="hero-portrait-bg" src="assets/images/jerry-profile.png" alt="" aria-hidden="true" />
+    <div class="vignette" aria-hidden="true"></div>
 
-  <main class="home-shell">
-    <header class="topbar">
-      <button class="icon-glass launcher-toggle" aria-label="Open menu"><span class="dot-grid"><i></i><i></i><i></i><i></i></span></button>
-      <div class="brand-title compact">
+    <header class="home-header">
+      <button class="launcher-btn" id="launcherBtn" aria-label="Open menu">
+        <span></span><span></span><span></span><span></span>
+      </button>
+      <div class="brand-lockup">
         <h1>Jerry Nnamdi Offorka</h1>
         <p>Founder • Mental Health Consultant</p>
       </div>
-      <button class="icon-glass theme-toggle" aria-label="Toggle glow mode">
-        <svg viewBox="0 0 24 24"><path d="M21 14.5A8.5 8.5 0 0 1 9.5 3a7 7 0 1 0 11.5 11.5Z"/></svg>
-      </button>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
     </header>
 
-    <section class="hub" id="hub" aria-label="Jerry OS Home Hub">
-      <div class="hero-line">
-        <strong>Transforming Conversations Into Hope</strong>
-        <span>Drag the portrait to open a service</span>
+    <section class="hub-stage" aria-label="Interactive service hub">
+      <div class="orbital-system" id="orbitalSystem">
+        <div class="ring ring-outer"></div>
+        <div class="ring ring-dash"></div>
+        <div class="ring ring-blue"></div>
+        <div class="ring ring-gold"></div>
+
+        <a class="node node-speaking" data-dir="up" href="speaking.html" aria-label="Public Speaking">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 14a4 4 0 0 0 4-4V6a4 4 0 0 0-8 0v4a4 4 0 0 0 4 4Z"/><path d="M19 10a7 7 0 0 1-14 0"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
+          <strong>Public<br>Speaking</strong>
+          <small>Engage, inspire and empower audiences</small>
+        </a>
+
+        <a class="node node-consulting" data-dir="left" href="consulting.html" aria-label="Consultation">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path d="M2 21v-2a6 6 0 0 1 12 0v2"/><path d="M14 7h7v5h-4l-3 3V7Z"/></svg>
+          <strong>Consultation</strong>
+          <small>Personalized guidance and mental health support</small>
+        </a>
+
+        <a class="node node-media" data-dir="right" href="media.html" aria-label="Books and Media">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A3.5 3.5 0 0 1 7.5 2H20v18H7.5A3.5 3.5 0 0 0 4 23V5.5Z"/><path d="M4 5.5A3.5 3.5 0 0 1 7.5 2"/><path d="M8 6h8"/><path d="M8 10h8"/></svg>
+          <strong>Books &<br>Media</strong>
+          <small>Resources, books, articles & media</small>
+        </a>
+
+        <a class="node node-booking" data-dir="down" href="booking.html" aria-label="Book an Appointment">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v4"/><path d="M17 2v4"/><path d="M3 9h18"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M8 13h.01"/><path d="M12 13h.01"/><path d="M16 13h.01"/><path d="M8 17h.01"/><path d="M12 17h.01"/></svg>
+          <strong>Book an<br>Appointment</strong>
+          <small>Schedule a session and take the first step</small>
+        </a>
+
+        <div class="axis axis-up">↑</div><div class="axis axis-left">←</div><div class="axis axis-right">→</div><div class="axis axis-down">↓</div>
+
+        <button class="portrait-control" id="portraitControl" aria-label="Drag center portrait like a joystick to select a service">
+          <img src="assets/images/jerry-profile.png" alt="Jerry Nnamdi Offorka" />
+          <span class="portrait-glass"></span>
+        </button>
       </div>
-
-      <div class="halo" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
-      <div class="axis-lines" aria-hidden="true"><span class="axis-up"></span><span class="axis-right"></span><span class="axis-down"></span><span class="axis-left"></span></div>
-
-      <a class="service-node node-speaking" data-direction="up" href="speaking.html" aria-label="Speaking">
-        <svg viewBox="0 0 24 24"><path d="M12 3a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><path d="M12 18v3"/><path d="M8 21h8"/></svg>
-        <span>Speaking</span><small>Inspire</small>
-      </a>
-      <a class="service-node node-consulting" data-direction="left" href="consulting.html" aria-label="Consulting">
-        <svg viewBox="0 0 24 24"><path d="M8 4h8l2 3v13H6V7l2-3Z"/><path d="M9 12h6"/><path d="M9 16h4"/><path d="M8 7h8"/></svg>
-        <span>Consulting</span><small>Strategy</small>
-      </a>
-      <a class="service-node node-media" data-direction="right" href="media.html" aria-label="Books and Media">
-        <svg viewBox="0 0 24 24"><path d="M5 4h10a4 4 0 0 1 4 4v12H9a4 4 0 0 0-4 0V4Z"/><path d="M5 4v16"/></svg>
-        <span>Books &amp; Media</span><small>Library</small>
-      </a>
-      <a class="service-node node-booking" data-direction="down" href="booking.html" aria-label="Book Appointment">
-        <svg viewBox="0 0 24 24"><path d="M7 3v4"/><path d="M17 3v4"/><path d="M4 8h16"/><path d="M5 5h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/><path d="M8 12h.01M12 12h.01M16 12h.01M8 16h.01M12 16h.01"/></svg>
-        <span>Book</span><small>Connect</small>
-      </a>
-
-      <button class="portrait-control" id="portraitControl" aria-label="Drag Jerry portrait like a joystick to select a service">
-        <img id="portraitImage" src="images/jerry-profile.png" alt="Jerry Nnamdi Offorka" />
-        <span class="portrait-fallback">JO</span>
-        <span class="portrait-glow"></span>
-        <span class="portrait-reflection"></span>
-        <span class="shine"></span>
-      </button>
     </section>
+
+    <section class="signature-quote" aria-label="Personal quote">
+      <span class="quote-mark">“</span>
+      <p>Real change begins when people feel heard, valued, and empowered to seek help.</p>
+      <span class="quote-mark">”</span>
+      <b>Jerry N. Offorka</b>
+    </section>
+
+    <nav class="bottom-dock" aria-label="Bottom navigation">
+      <a class="active" href="index.html"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-7h6v7"/></svg><span>Home</span></a>
+      <a href="about.html"><svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path d="M4 22a8 8 0 0 1 16 0"/></svg><span>About</span></a>
+      <a href="index.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/></svg><span>Hub</span></a>
+      <a href="https://speakoutmentalhealth.org"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20"/><path d="M12 2a15 15 0 0 0 0 20"/></svg><span>SpeakOut</span></a>
+      <a href="contact.html"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg><span>Contact</span></a>
+    </nav>
+
+    <div class="launcher" id="launcher" aria-hidden="true">
+      <button class="launcher-close" id="launcherClose" aria-label="Close menu"></button>
+      <div class="launcher-grid">
+        <a href="about.html">About</a><a href="speaking.html">Public Speaking</a><a href="consulting.html">Consultation</a><a href="media.html">Books & Media</a><a href="booking.html">Book Appointment</a><a href="contact.html">Contact</a><a href="https://speakoutmentalhealth.org">SpeakOut</a>
+      </div>
+    </div>
   </main>
-
-  <nav class="dock" aria-label="Main navigation">
-    <a class="active" href="index.html"><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg><span>Home</span></a>
-    <a href="about.html"><svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>About</span></a>
-    <a href="index.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/></svg><span>Hub</span></a>
-    <a href="https://speakoutmentalhealth.org"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg><span>SpeakOut</span></a>
-    <a href="contact.html"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg><span>Contact</span></a>
-  </nav>
-
-  <div class="launcher" id="launcher">
-    <button class="launcher-close" aria-label="Close menu"></button>
-    <a href="about.html">The Story</a><a href="speaking.html">Speaking</a><a href="consulting.html">Consulting</a><a href="media.html">Books &amp; Media</a><a href="booking.html">Book Appointment</a><a href="contact.html">Contact</a>
-  </div>
-  <script src="js/app.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

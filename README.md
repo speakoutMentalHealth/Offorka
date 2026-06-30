@@ -1,30 +1,20 @@
-# Jerry OS V8 Premium Mobile Hub
+# Jerry OS V9 Exact Premium Home
 
-## Replace Jerry's photo
-Put your image here and keep the exact filename:
+## Replace photos
+- Main portrait: `assets/images/jerry-profile.png`
 
-`images/jerry-profile.jpg`
-
-The same image is used for:
-- the centre joystick portrait
-- the soft background portrait layer
+Use the same filename to update the portrait automatically.
 
 ## Main files
-- `index.html` = premium home hub
-- `css/style.css` = full styling
-- `js/app.js` = joystick + particles + menu
-- `about.html` = brief profile
-- `consulting.html` = consulting + social placeholders
-- `media.html` = books/media + library placeholders
-- `booking.html` = calendar-style booking placeholder
-- `contact.html` = contact links
+- `index.html`
+- `css/style.css`
+- `js/main.js`
 
-## Placeholder links to update
-Search for `href="#"` and replace with real links:
-- calendar booking link
-- digital library link
-- podcast/video links
-- Instagram/Facebook/X links
+## Service routing
+- Public Speaking → `speaking.html`
+- Consultation → `consulting.html`
+- Books & Media → `media.html`
+- Book an Appointment → `booking.html`
 
-## WhatsApp
-Current WhatsApp link: `https://wa.me/2348118103510`
+## External placeholders
+Search for `https://speakoutmentalhealth.org` and replace with exact SpeakOut pages where needed.
