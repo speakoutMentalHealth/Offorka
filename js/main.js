@@ -1,19 +1,25 @@
-const toggle = document.querySelector('.nav-toggle');
-const links = document.querySelector('.nav-links');
-const year = document.getElementById('year');
+const panelButtons = document.querySelectorAll('[data-panel]');
+const panels = document.querySelectorAll('.slide-panel');
+const closeButtons = document.querySelectorAll('.close-panel');
+const themeToggle = document.getElementById('themeToggle');
 
-if (year) year.textContent = new Date().getFullYear();
+function closePanels(){ panels.forEach(panel => panel.classList.remove('open')); }
 
-if (toggle && links) {
-  toggle.addEventListener('click', () => {
-    const isOpen = links.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(isOpen));
+panelButtons.forEach(button => {
+  button.addEventListener('click', event => {
+    event.preventDefault();
+    closePanels();
+    const panel = document.getElementById(button.dataset.panel);
+    if(panel) panel.classList.add('open');
   });
+});
 
-  links.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      links.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-    });
-  });
-}
+closeButtons.forEach(button => button.addEventListener('click', closePanels));
+
+document.addEventListener('keydown', event => {
+  if(event.key === 'Escape') closePanels();
+});
+
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('light');
+});
