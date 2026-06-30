@@ -16,3 +16,5 @@
 @keyframes spin{to{transform:rotate(360deg)}}@keyframes scan{0%,100%{transform:translateY(-44px);opacity:.15}50%{transform:translateY(44px);opacity:.32}}
 @media(max-width:380px){.app-shell{padding-left:12px;padding-right:12px}.topbar{grid-template-columns:52px 1fr 52px}.icon-btn{width:52px;height:52px}.identity h1{font-size:24px}.identity .subline{font-size:11px;letter-spacing:.28em}.hub-wrap{height:560px;min-height:470px}.halo-outer{width:350px;height:350px}.halo-mid{width:286px;height:286px}.core{width:196px;height:196px}.portrait{width:158px;height:158px}.node{width:108px;height:108px;font-size:13px}.node-left{left:2px}.node-right{right:2px}.dock{left:12px;right:12px}.dock-item{font-size:10px}}
 @media(min-width:620px){.app-shell{display:flex;flex-direction:column;align-items:center}.hub-wrap{height:620px}}
+
+
