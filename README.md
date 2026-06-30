@@ -1,24 +1,19 @@
-# Jerry OS Premium Mobile Hub
+# Jerry OS V4 — Premium Mobile Hub
 
-## How to use
-1. Upload this folder to GitHub Pages.
-2. Replace `images/jerry-profile.jpg` with Jerry's real photo.
-3. Keep the exact filename: `jerry-profile.jpg`.
-4. Update SpeakOut links inside `index.html` and the section pages when final links are ready.
+Upload to GitHub Pages.
 
-## Interaction
-- Drag the center portrait upward for Speaking.
-- Drag left for Consulting.
-- Drag right for Books & Media.
-- Drag down for Appointment / SpeakOut booking route.
+## Replace photo
+Put Jerry's image here:
 
-## Files
+`images/jerry-profile.jpg`
+
+Keep the exact filename.
+
+## Main files
 - `index.html`
-- `about.html`
-- `speaking.html`
-- `consulting.html`
-- `media.html`
-- `contact.html`
 - `css/style.css`
 - `js/main.js`
-- `images/jerry-profile.jpg` placeholder location
+- section pages: `about.html`, `speaking.html`, `consulting.html`, `media.html`, `contact.html`
+
+## Notes
+The home screen is mobile-first, no-scroll, fixed dock, with a touch joystick hub. Emojis were removed from the primary UI and replaced with clean SVG icons.
