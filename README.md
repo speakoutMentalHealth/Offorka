@@ -1,19 +1,23 @@
-# Jerry OS V4 — Premium Mobile Hub
+# Jerry OS 2.0 Production Build
 
-Upload to GitHub Pages.
+A mobile-first, GitHub Pages-ready personal brand app for **Jerry Nnamdi Offorka**.
 
 ## Replace photo
-Put Jerry's image here:
+Put Jerry's real portrait here:
 
 `images/jerry-profile.jpg`
 
-Keep the exact filename.
+Keep the filename exactly the same.
 
-## Main files
-- `index.html`
+## Files
+- `index.html` — interactive hub homepage
+- `about.html`
+- `speaking.html`
+- `consulting.html`
+- `media.html`
+- `contact.html`
 - `css/style.css`
 - `js/main.js`
-- section pages: `about.html`, `speaking.html`, `consulting.html`, `media.html`, `contact.html`
 
-## Notes
-The home screen is mobile-first, no-scroll, fixed dock, with a touch joystick hub. Emojis were removed from the primary UI and replaced with clean SVG icons.
+## Deploy on GitHub Pages
+Upload everything in this folder to the repository root, then enable GitHub Pages from the repository settings.
