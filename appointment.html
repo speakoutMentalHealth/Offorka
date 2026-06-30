@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Appointment | Jerry Nnamdi Offorka</title>
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body>
+
+<header class="page-header">
+  <a href="index.html" class="back-link">← Back Home</a>
+  <h1>Book an Appointment</h1>
+  <p>Consultation, speaking request, or personal session.</p>
+</header>
+
+<main class="container">
+  <section class="card">
+    <form id="appointmentForm">
+      <input type="text" id="name" placeholder="Your full name" required />
+      <input type="tel" id="phone" placeholder="Your WhatsApp number" required />
+
+      <select id="purpose" required>
+        <option value="">Select purpose</option>
+        <option>Consultation</option>
+        <option>Speaking Invitation</option>
+        <option>Leadership Training</option>
+        <option>Mental Health Session</option>
+      </select>
+
+      <input type="date" id="date" required />
+      <input type="time" id="time" required />
+
+      <textarea id="message" placeholder="Brief message"></textarea>
+
+      <button type="submit">Submit via WhatsApp</button>
+    </form>
+  </section>
+</main>
+
+<script>
+document.getElementById("appointmentForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const purpose = document.getElementById("purpose").value;
+  const date = document.getElementById("date").value;
+  const time = document.getElementById("time").value;
+  const message = document.getElementById("message").value;
+
+  const whatsappNumber = "2348118103510";
+
+  const text = `Hello, my name is ${name}.%0A%0AI would like to book an appointment.%0A%0APurpose: ${purpose}%0APreferred Date: ${date}%0APreferred Time: ${time}%0AWhatsApp Number: ${phone}%0A%0AMessage: ${message}`;
+
+  window.open(`https://wa.me/${whatsappNumber}?text=${text}`, "_blank");
+});
+</script>
+
+</body>
+</html>
