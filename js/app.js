@@ -23,8 +23,8 @@ let lastHaptic = null;
 const routes = {
   up: 'speaking.html',
   left: 'consulting.html',
-  right: 'media.html',
-  down: 'booking.html'
+  right: 'books-listen.html',
+  down: 'appointment.html'
 };
 
 function directionFromDelta(dx, dy) {
