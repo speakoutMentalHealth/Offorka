@@ -8,9 +8,9 @@ const nodes = [...document.querySelectorAll('.service')];
 
 const routes = {
   up: 'speaking.html',
-  left: 'leadership.html',
-  right: 'media.html',
-  down: 'booking.html'
+  left: 'leadership-training.html',
+  right: 'books-listen.html',
+  down: 'appointment.html'
 };
 
 const labels = {
