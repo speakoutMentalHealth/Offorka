@@ -1,95 +1,29 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Jerry Nnamdi Offorka | Home</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css" />
-</head>
-<body>
-  <main class="app" aria-label="Jerry Nnamdi Offorka app homepage">
-    <div class="bg-city" aria-hidden="true"></div>
-    <img class="bg-portrait" src="images/jerry-profile.png" alt="" aria-hidden="true" />
-    <div class="bg-shade" aria-hidden="true"></div>
-
-    <header class="app-header">
-      <button class="glass-control launcher-btn" id="launcherBtn" aria-label="Open menu">
-        <span></span><span></span><span></span><span></span>
-      </button>
-
-      <section class="brand" aria-label="Profile name">
-        <h1>Jerry Nnamdi Offorka</h1>
-        <p>Founder • Mental Health Consultant</p>
-      </section>
-
-      <button class="glass-control moon-btn" id="themeBtn" aria-label="Toggle visual mode">☾</button>
-    </header>
-
-    <section class="hub-wrap" aria-label="Interactive service hub">
-      <div class="hub" id="hub">
-        <div class="ring ring-1"></div>
-        <div class="ring ring-2"></div>
-        <div class="ring ring-3"></div>
-        <div class="ring ring-4"></div>
-
-        <a class="service service-up" data-dir="up" href="speaking.html" aria-label="Public Speaking">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 14a4 4 0 0 0 4-4V6a4 4 0 0 0-8 0v4a4 4 0 0 0 4 4Z"/><path d="M19 10a7 7 0 0 1-14 0"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
-          <strong>Public Speaking</strong>
-          <small>Keynotes & workshops</small>
-        </a>
-
-        <a class="service service-left" data-dir="left" href="leadership-training.html" aria-label="Leadership and Training">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 7l8 4 8-4-8-4Z"/><path d="M4 11l8 4 8-4"/><path d="M4 15l8 4 8-4"/></svg>
-          <strong>Leadership &amp; Training</strong>
-          <small>Youth & teams</small>
-        </a>
-
-        <a class="service service-right" data-dir="right" href="books-listen.html" aria-label="Books and Media">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A3.5 3.5 0 0 1 7.5 2H20v18H7.5A3.5 3.5 0 0 0 4 23V5.5Z"/><path d="M8 6h8"/><path d="M8 10h8"/></svg>
-          <strong>Books &amp; Media</strong>
-          <small>Library & videos</small>
-        </a>
-
-        <a class="service service-down" data-dir="down" href="appointment.html" aria-label="Book an Appointment">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v4"/><path d="M17 2v4"/><path d="M3 9h18"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M8 13h.01"/><path d="M12 13h.01"/><path d="M16 13h.01"/></svg>
-          <strong>Book Appointment</strong>
-          <small>Mental health consultation</small>
-        </a>
-
-        <button class="portrait" id="portraitControl" aria-label="Drag portrait up, down, left, or right to open a service">
-          <img id="portraitImage" src="images/jerry-profile.png" alt="Jerry Nnamdi Offorka" />
-          <span class="portrait-fallback">JO</span>
-          <span class="portrait-glass"></span>
-          <span class="portrait-glow"></span>
-        </button>
-
-        <p class="active-label" id="activeLabel">Move the portrait to select</p>
-      </div>
-    </section>
-
-    <nav class="dock" aria-label="Main navigation">
-      <a class="active" href="index.html" aria-label="Home"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-7h6v7"/></svg><span>Home</span></a>
-      <a href="about.html" aria-label="About"><svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path d="M4 22a8 8 0 0 1 16 0"/></svg><span>About</span></a>
-      <a href="index.html" aria-label="Hub"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/></svg><span>Hub</span></a>
-      <a href="https://speakoutmentalhealth.org" aria-label="SpeakOut"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20"/><path d="M12 2a15 15 0 0 0 0 20"/></svg><span>SpeakOut</span></a>
-      <a href="contact.html" aria-label="Contact"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg><span>Contact</span></a>
-    </nav>
-
-    <aside class="launcher" id="launcher" aria-hidden="true">
-      <button class="launcher-close" id="launcherClose" aria-label="Close menu"></button>
-      <div class="launcher-panel">
-        <a href="speaking.html">Public Speaking</a>
-        <a href="leadership-training.html">Leadership & Training</a>
-        <a href="books-listen.html">Books & Media</a>
-        <a href="appointment.html">Book Appointment</a>
-        <a href="about.html">About Jerry</a>
-        <a href="contact.html">Contact</a>
-      </div>
-    </aside>
-  </main>
-  <script src="js/main.js"></script>
-</body>
-</html>
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Jerry Nnamdi Offorka | Mental Health Consultant</title>
+<meta name="theme-color" content="#020611"><meta name="description" content="Jerry Nnamdi Offorka — mental health consultant, public speaker, leadership facilitator and founder of SpeakOut Mental Health Outreach.">
+<link rel="manifest" href="manifest.json"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Great+Vibes&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"></head>
+<body class="home"><div class="preloader"><div class="loader-mark">JO</div></div><main class="app" aria-label="Jerry Nnamdi Offorka app homepage">
+  <div class="bg-city" aria-hidden="true"></div><div class="bg-shade" aria-hidden="true"></div>
+  <header class="app-header"><button class="glass-control launcher-btn" id="launcherBtn" aria-label="Open menu"><span></span><span></span><span></span><span></span></button><div class="brand"><h1>Jerry Nnamdi Offorka</h1><p>Founder • Mental Health Consultant</p></div><button class="glass-control theme-btn" data-theme-toggle type="button">☾</button></header>
+  <section class="hub-wrap" aria-label="Interactive service hub"><div class="hub" id="orbitalSystem">
+    <i class="ring ring-1"></i><i class="ring ring-2"></i><i class="ring ring-3"></i><i class="ring ring-4"></i><i class="axis axis-v"></i><i class="axis axis-h"></i>
+    <a class="node node-up" data-dir="up" href="speaking.html"><svg viewBox="0 0 24 24"><path d="M12 14a4 4 0 0 0 4-4V6a4 4 0 0 0-8 0v4a4 4 0 0 0 4 4Z"/><path d="M19 10a7 7 0 0 1-14 0"/><path d="M12 17v4"/><path d="M8 21h8"/></svg><strong>Public<br>Speaking</strong><small>Keynotes, panels and workshops</small></a>
+    <a class="node node-left" data-dir="left" href="consulting.html"><svg viewBox="0 0 24 24"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M3 13l9 5 9-5"/><path d="M3 18l9 5 9-5"/></svg><strong>Leadership<br>& Consulting</strong><small>Training, strategy and support</small></a>
+    <a class="node node-right" data-dir="right" href="media.html"><svg viewBox="0 0 24 24"><path d="M4 5.5A3.5 3.5 0 0 1 7.5 2H20v18H7.5A3.5 3.5 0 0 0 4 23V5.5Z"/><path d="M8 6h8"/><path d="M8 10h8"/></svg><strong>Books &<br>Media</strong><small>Resources, podcasts and videos</small></a>
+    <a class="node node-down" data-dir="down" href="booking.html"><svg viewBox="0 0 24 24"><path d="M7 2v4"/><path d="M17 2v4"/><path d="M3 9h18"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M8 13h.01"/><path d="M12 13h.01"/><path d="M16 13h.01"/></svg><strong>Book a<br>Session</strong><small>Mental health consultation</small></a>
+    <button class="portrait" id="portraitControl" aria-label="Drag Jerry portrait like a joystick to select a service"><img src="assets/images/jerry-profile.jpg" alt="Jerry Nnamdi Offorka" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><span class="portrait-fallback">JO</span><span class="portrait-glow"></span><span class="portrait-glass"></span></button>
+    <p class="active-label" id="activeLabel">Drag the centre portrait to choose a service</p>
+  </div></section>
+  <section class="signature-quote"><span class="quote-mark">“</span><p>Healing begins when people feel seen, heard and understood.</p><span class="quote-mark">”</span><b>Jerry N. Offorka</b></section>
+  <a class="floating-book" href="booking.html">Book a Session</a>
+  <nav class="bottom-dock" aria-label="Bottom navigation">
+  <a class="active" href="index.html"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-7h6v7"/></svg><span>Home</span></a>
+  <a class="" href="about.html"><svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path d="M4 22a8 8 0 0 1 16 0"/></svg><span>About</span></a>
+  <a class="" href="media.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/></svg><span>Resources</span></a>
+  <a href="https://speakoutmentalhealth.org"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20"/><path d="M12 2a15 15 0 0 0 0 20"/></svg><span>SpeakOut</span></a>
+  <a class="" href="contact.html"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg><span>Contact</span></a>
+</nav>
+  <div class="launcher" id="launcher"><button class="launcher-close" id="launcherClose" aria-label="Close menu"></button><div class="launcher-grid"><a href="about.html">About</a><a href="speaking.html">Public Speaking</a><a href="consulting.html">Leadership & Consulting</a><a href="media.html">Learning Hub</a><a href="booking.html">Book Session</a><a href="contact.html">Contact</a><a href="https://speakoutmentalhealth.org">SpeakOut</a></div></div>
+</main><script src="js/main.js"></script></body></html>

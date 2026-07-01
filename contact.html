@@ -1,98 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | Jerry Nnamdi Offorka</title>
-  <link rel="stylesheet" href="pages.css" />
-</head>
-<body>
-
-<header class="page-header">
-  <a href="index.html" class="back-link">← Back Home</a>
-  <h1>Contact Jerry</h1>
-  <p>Reach out for speaking, consultation, leadership training, media, or partnership enquiries.</p>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Contact | Jerry Nnamdi Offorka</title><meta name="theme-color" content="#020611"><link rel="manifest" href="manifest.json"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Great+Vibes&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"></head><body class="inner"><div class="inner-bg"></div><main class="page-shell">
+<header class="page-top">
+  <a class="glass-control" href="index.html" aria-label="Back home" style="display:grid;place-items:center;text-decoration:none">‹</a>
+  <div class="page-brand"><h1>Contact</h1><p>Let’s start a conversation</p></div>
+  <button class="glass-control theme-btn" data-theme-toggle type="button">☾</button>
 </header>
-
-<main class="container">
-
-  <section class="grid">
-
-    <div class="card">
-      <h2>WhatsApp / Call</h2>
-      <p>Speak directly with the team for appointments, invitations, and urgent enquiries.</p>
-      <a href="https://wa.me/2348118103510" class="btn" target="_blank">Message on WhatsApp</a>
-    </div>
-
-    <div class="card">
-      <h2>Email</h2>
-      <p>Send formal invitations, media requests, partnership letters, or programme details.</p>
-      <a href="mailto:speaaakout@gmail.com" class="btn">Send Email</a>
-    </div>
-
-  </section>
-
-  <section class="card wide">
-
-    <h2>Send a Quick Message</h2>
-
-    <form id="contactForm">
-      <input type="text" id="name" placeholder="Your full name" required />
-
-      <input type="tel" id="phone" placeholder="Your WhatsApp number" required />
-
-      <input type="email" id="email" placeholder="Your email address" />
-
-      <select id="reason" required>
-        <option value="">Select enquiry type</option>
-        <option>Speaking Invitation</option>
-        <option>Consultation / Appointment</option>
-        <option>Leadership Training</option>
-        <option>Media Request</option>
-        <option>Partnership</option>
-        <option>General Enquiry</option>
-      </select>
-
-      <textarea id="message" placeholder="Write your message here..." required></textarea>
-
-      <button type="submit">Send via WhatsApp</button>
-    </form>
-
-  </section>
-
-</main>
-
-<script>
-document.getElementById("contactForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  const name = document.getElementById("name").value;
-  const phone = document.getElementById("phone").value;
-  const email = document.getElementById("email").value;
-  const reason = document.getElementById("reason").value;
-  const message = document.getElementById("message").value;
-
-  const whatsappNumber = "2348118103510";
-
-  const text =
-`Hello Jerry,
-
-I would like to make an enquiry.
-
-Name: ${name}
-WhatsApp: ${phone}
-Email: ${email}
-Enquiry Type: ${reason}
-
-Message:
-${message}`;
-
-  window.open(
-    `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`,
-    "_blank"
-  );
-});
-</script>
-
-</body>
-</html>
+<section class="page-card hero"><span class="eyebrow">Reach Out</span><h2>Sometimes one conversation can change everything.</h2><p class="lead">Whether you are looking for a speaker, consultant, trainer or strategic partner, Jerry would love to hear about your vision. No pressure. Just a conversation.</p><div class="btn-grid"><a class="btn" href="https://wa.me/2348118103510">WhatsApp Jerry</a><a class="btn secondary" href="booking.html">Book a Session</a></div></section>
+<section class="page-card"><span class="eyebrow">Contact Channels</span><div class="link-list"><a class="link-card" href="https://wa.me/2348118103510"><b>WhatsApp</b><span>+234 811 810 3510</span></a><a class="link-card" href="mailto:jofforka@gmail.com"><b>Email</b><span>jofforka@gmail.com</span></a><a class="link-card" href="https://www.linkedin.com/in/speakout/"><b>LinkedIn</b><span>linkedin.com/in/speakout</span></a><a class="link-card" href="https://speakoutmentalhealth.org"><b>SpeakOut Website</b><span>speakoutmentalhealth.org</span></a><a class="link-card" href="#"><b>Instagram</b><span>Add profile link</span></a><a class="link-card" href="#"><b>YouTube / Podcast</b><span>Add media link</span></a></div></section>
+<section class="page-card"><span class="eyebrow">Available For</span><div class="card-grid"><div class="mini-card"><b>Conferences</b><p>Keynotes, panels and moderated conversations.</p></div><div class="mini-card"><b>Corporate Training</b><p>Workplace wellbeing and emotionally intelligent leadership.</p></div><div class="mini-card"><b>Schools & Universities</b><p>Student mental health, youth leadership and awareness programmes.</p></div><div class="mini-card"><b>NGO / Development Partners</b><p>Collaboration, programme design and community impact.</p></div></div><div class="qr-box">QR</div><p class="pwa-note">Replace this QR placeholder with Jerry’s digital contact or website QR code.</p></section>
+</main><nav class="bottom-dock" aria-label="Bottom navigation">
+  <a class="" href="index.html"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-7h6v7"/></svg><span>Home</span></a>
+  <a class="" href="about.html"><svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path d="M4 22a8 8 0 0 1 16 0"/></svg><span>About</span></a>
+  <a class="" href="media.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/></svg><span>Resources</span></a>
+  <a href="https://speakoutmentalhealth.org"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20"/><path d="M12 2a15 15 0 0 0 0 20"/></svg><span>SpeakOut</span></a>
+  <a class="active" href="contact.html"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg><span>Contact</span></a>
+</nav><script src="js/main.js"></script></body></html>

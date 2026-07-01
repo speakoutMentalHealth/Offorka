@@ -1,17 +1,30 @@
-# Jerry OS V11 - Premium App Homepage
+# Jerry Hub Complete V12
 
-Focus: homepage/index only, with app-style fixed viewport, cleaner service pillars, properly aligned service nodes, and joystick navigation.
+Premium app-style personal brand website for Jerry Nnamdi Offorka.
 
-## Service directions
-- Drag up: Public Speaking -> speaking.html
-- Drag left: Leadership & Training -> leadership.html
-- Drag right: Books & Media -> media.html
-- Drag down: Book Appointment / Mental Health Consultation -> booking.html
+## Main upgrades included
+- App-style full-screen home experience
+- Interactive joystick portrait navigation
+- Three-mode theme engine: Night → Day → Aura
+- Theme saved with localStorage
+- Fixed glass bottom navigation
+- Premium calm copy for mental health positioning
+- PWA support: manifest + service worker
+- Loading screen
+- Accessibility: labels, reduced-motion support, readable contrast
+- Booking flow page with calendar placeholders
+- Contact page with WhatsApp, email, LinkedIn and QR placeholder
+- Learning Hub for books, podcast, videos, courses and library links
 
-## Replace photo
-Replace this file and keep the same filename:
+## Replace images
+- `assets/images/jerry-profile.jpg` — center portrait
+- `assets/images/jerry-background.webp` — full background image
 
-`assets/images/jerry-profile.png`
+## Replace links
+Search for `href="#"` and replace placeholders with real links.
 
-## Files to upload to GitHub Pages
-Upload the full folder contents.
+## Recommended booking tools
+Calendly, Google Calendar Appointment Schedule, TidyCal, Cal.com, or Microsoft Bookings.
+
+## Deploy to GitHub Pages
+Upload all files to your repository root and enable GitHub Pages from the repository settings.
