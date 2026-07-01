@@ -513,7 +513,7 @@ html[data-theme='day'] .signature-quote{color:#0f172a;text-shadow:0 3px 18px rgb
   right:18px;
   bottom:calc(var(--dock-h) + var(--safe-bottom) + 112px);
   z-index:12;
-  width:180px;
+  width:100px;
   min-height:48px;
   border-radius:24px;
   padding:0 16px;
