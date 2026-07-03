@@ -4,7 +4,7 @@
   --glass:rgba(8,14,30,.64);--glass2:rgba(255,255,255,.075);--line:rgba(255,255,255,.16);
   --shadow:0 28px 80px rgba(0,0,0,.58);--dock-h:78px;
   --safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px);
-  --bg-image:url('../images/jerry-background.webp');
+  --bg-image:url('../assets/images/jerry-background.webp');
 }
 html[data-theme='day']{--bg:#f6f9ff;--text:#07111f;--muted:#334155;--soft:#64748b;--glass:rgba(255,255,255,.64);--glass2:rgba(255,255,255,.78);--line:rgba(15,23,42,.14);--shadow:0 24px 70px rgba(15,23,42,.18);--blue:#0b7bef;--cyan:#00a8d8;--gold:#b87918;--green:#258a54;--purple:#7c3aed}
 html[data-theme='aura']{--bg:#030816;--text:#fbfdff;--muted:#dbe8ff;--soft:#9bb6d8;--blue:#40a6ff;--cyan:#57f0ff;--gold:#ffd978;--green:#8cffb7;--purple:#d28cff}
@@ -25,54 +25,92 @@ body.home{height:100dvh;overflow:hidden}body.inner{min-height:100dvh;overflow-x:
 @media(max-width:390px){.app-header{grid-template-columns:48px 1fr 48px;padding:0 16px}.glass-control{width:46px;height:46px}.brand h1{font-size:1.06rem}.brand p{font-size:.48rem;letter-spacing:.10em}.hub{--hub:clamp(244px,67vw,315px)}.portrait{width:140px}.node{width:74px;height:74px}.node strong{font-size:.485rem}.bottom-dock{width:90vw}.bottom-dock a{font-size:.52rem}.bottom-dock svg{width:22px;height:22px}.bottom-dock a.center-home svg{width:28px;height:28px}}
 @media(min-width:760px){.hub{--hub:min(42vw,440px)}.portrait{width:245px}.node{width:128px;height:128px}.card-grid{grid-template-columns:repeat(2,1fr)}.btn-grid{grid-template-columns:repeat(2,1fr)}.page-shell{padding-left:32px;padding-right:32px}.schedule-box{grid-template-columns:repeat(4,1fr)}}
 @media(min-width:900px){.bg-city,.inner-bg{background-position:12% center}.hub-wrap{top:22%}.bottom-dock{max-width:620px}}
-@media(prefers-reduced-motion:reduce){
-  .bg-city,
-  .inner-bg,
-  .portrait,
-  .node{
-    animation:none!important;
-  }
-
-  *,
-  *:before,
-  *:after{
-    transition:none!important;
-    scroll-behavior:auto!important;
-  }
-}
-
-/* Force premium hub rings to keep moving even when reduced-motion is enabled */
-.ring-2{
-  animation:spinSlow 48s linear infinite!important;
-  transform-origin:center center;
-  will-change:transform;
-}
-
-.ring-3{
-  animation:spinMedium 17s linear infinite!important;
-  transform-origin:center center;
-  will-change:transform;
-}
-
-.ring-4{
-  animation:spinReverse 27s linear infinite reverse!important;
-  transform-origin:center center;
-  will-change:transform;
-}
-
-@keyframes spinSlow{
-  from{transform:rotate(0deg)}
-  to{transform:rotate(360deg)}
-}
-
-@keyframes spinMedium{
-  from{transform:rotate(0deg)}
-  to{transform:rotate(360deg)}
-}
-
-@keyframes spinReverse{
-  from{transform:rotate(0deg)}
-  to{transform:rotate(360deg)}
-}
-
+@media(prefers-reduced-motion:reduce){.bg-city,.inner-bg,.portrait,.node{animation:none!important}*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
 @keyframes spin{to{transform:rotate(360deg)}}@keyframes stars{from{transform:translateY(0)}to{transform:translateY(-38px)}}@keyframes backgroundMove{0%{background-position:18% center}50%{background-position:22% center}100%{background-position:18% center}}@keyframes portraitFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}@keyframes breathe{0%,100%{filter:saturate(1);box-shadow:inset 0 1px 2px rgba(255,255,255,.18),0 18px 48px rgba(0,0,0,.46)}50%{filter:saturate(1.18);box-shadow:inset 0 1px 2px rgba(255,255,255,.22),0 20px 54px rgba(0,0,0,.52)}}
+
+
+/* Premium caption overlay inside the portrait control */
+.portrait-caption{
+  position:absolute;
+  left:50%;
+  bottom:12px;
+  transform:translateX(-50%);
+  width:82%;
+  padding:9px 12px;
+  border-radius:18px;
+  background:rgba(0,0,0,.38);
+  backdrop-filter:blur(18px) saturate(160%);
+  -webkit-backdrop-filter:blur(18px) saturate(160%);
+  border:1px solid rgba(255,255,255,.14);
+  color:#fff;
+  text-align:center;
+  z-index:30;
+  pointer-events:none;
+  font-size:clamp(.68rem,2.2vw,.86rem);
+  line-height:1.05;
+  font-weight:900;
+  letter-spacing:.01em;
+  text-shadow:0 2px 10px rgba(0,0,0,.75);
+  box-shadow:0 12px 30px rgba(0,0,0,.35),inset 0 1px rgba(255,255,255,.08);
+  transition:opacity .25s ease, transform .25s ease, background .25s ease;
+}
+.portrait-caption small{
+  display:block;
+  margin-top:4px;
+  color:#dbeafe;
+  font-size:clamp(.50rem,1.65vw,.66rem);
+  line-height:1.05;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+.portrait-caption.is-active{
+  background:rgba(3,10,24,.58);
+  border-color:rgba(248,201,106,.34);
+  box-shadow:0 14px 34px rgba(0,0,0,.42),0 0 28px rgba(45,149,255,.22),inset 0 1px rgba(255,255,255,.10);
+}
+
+/* Keep center rings alive */
+.ring-2{animation:spinSlow 48s linear infinite!important;transform-origin:center center;will-change:transform;}
+.ring-3{animation:spinMedium 17s linear infinite!important;transform-origin:center center;will-change:transform;}
+.ring-4{animation:spinReverse 27s linear infinite reverse!important;transform-origin:center center;will-change:transform;}
+
+@keyframes spinSlow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes spinMedium{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes spinReverse{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+
+/* Final polish: readable gold back button and stable mobile alignment */
+.back-btn{
+  color:var(--gold)!important;
+  border:1px solid rgba(248,201,106,.42)!important;
+  background:linear-gradient(145deg,rgba(248,201,106,.18),rgba(255,255,255,.045))!important;
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.18),0 16px 40px rgba(0,0,0,.42),0 0 22px rgba(248,201,106,.16)!important;
+}
+.back-btn svg,
+.back-btn svg path{
+  fill:none!important;
+  stroke:currentColor!important;
+  stroke-width:2.15!important;
+  stroke-linecap:round!important;
+  stroke-linejoin:round!important;
+}
+
+/* Keep the portrait instruction inside the image, in front of the photo */
+.portrait-caption{
+  position:absolute!important;
+  left:50%!important;
+  bottom:12px!important;
+  transform:translateX(-50%)!important;
+  width:82%!important;
+  z-index:40!important;
+  pointer-events:none!important;
+}
+
+/* Force the premium center rings to animate reliably */
+.ring-2{animation:spinSlow 48s linear infinite!important;transform-origin:center center!important;will-change:transform;}
+.ring-3{animation:spinMedium 17s linear infinite!important;transform-origin:center center!important;will-change:transform;}
+.ring-4{animation:spinReverse 27s linear infinite reverse!important;transform-origin:center center!important;will-change:transform;}
+
+@keyframes spinSlow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes spinMedium{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes spinReverse{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
