@@ -1,27 +1,14 @@
-# OFFORKA Final Production Build
+# OFFORKA OS Final Production
 
-This is the production-ready static app for GitHub Pages.
+Upload this folder to GitHub Pages.
 
-## Replace assets
-- `assets/images/jerry-profile.jpg` — center portrait.
-- `assets/images/jerry-background.webp` — cinematic full-screen background.
+## Replace links
+- `booking.html`: replace `Add Calendly Link` with your Calendly or Google Appointment Schedule URL.
+- `media.html`: replace placeholder resource links.
 
-## Booking
-Open `booking.html` and replace:
-`https://calendly.com/YOUR-CALENDLY-LINK`
-with your real Calendly link.
+## Images
+- `assets/images/jerry-background.webp` controls the cinematic background.
+- `assets/images/jerry-profile.webp` controls the center portrait.
 
-Recommended free booking tool: Calendly. It handles calendar sync, confirmations, reminders, time zones, rescheduling and mobile booking.
-
-## Deployment on GitHub Pages
-Upload all files to your repository root and enable Pages from the main branch.
-
-## App features
-- Mobile-first app layout.
-- Desktop responsive layout.
-- Interactive joystick portrait.
-- Theme toggle: Night, Day, Aura.
-- Fixed glass bottom dock.
-- PWA manifest and service worker.
-- First-person premium content.
-- SpeakOut integrated as the foundation behind the mission.
+## Recommended booking tool
+Use Calendly free plan for launch. It supports notifications, reminders, calendar sync and time zones.
