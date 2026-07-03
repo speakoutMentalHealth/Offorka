@@ -4,7 +4,7 @@
   --glass:rgba(8,14,30,.64);--glass2:rgba(255,255,255,.075);--line:rgba(255,255,255,.16);
   --shadow:0 28px 80px rgba(0,0,0,.58);--dock-h:78px;
   --safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px);
-  --bg-image:url('../images/jerry-background.webp');
+  --bg-image:url('../images/jerry-background.webp'); 
 }
 html[data-theme='day']{--bg:#f6f9ff;--text:#07111f;--muted:#334155;--soft:#64748b;--glass:rgba(255,255,255,.64);--glass2:rgba(255,255,255,.78);--line:rgba(15,23,42,.14);--shadow:0 24px 70px rgba(15,23,42,.18);--blue:#0b7bef;--cyan:#00a8d8;--gold:#b87918;--green:#258a54;--purple:#7c3aed}
 html[data-theme='aura']{--bg:#030816;--text:#fbfdff;--muted:#dbe8ff;--soft:#9bb6d8;--blue:#40a6ff;--cyan:#57f0ff;--gold:#ffd978;--green:#8cffb7;--purple:#d28cff}
