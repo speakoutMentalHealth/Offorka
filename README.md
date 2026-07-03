@@ -28,3 +28,6 @@ Calendly, Google Calendar Appointment Schedule, TidyCal, Cal.com, or Microsoft B
 
 ## Deploy to GitHub Pages
 Upload all files to your repository root and enable GitHub Pages from the repository settings.
+
+
+V13 update: converted core page content to first-person voice for a warmer, more personal mental-health consultant brand tone. About page is now positioned as My Mission. Contact page is now Connect.
