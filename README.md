@@ -1,33 +1,27 @@
-# Jerry Hub Complete V12
+# OFFORKA Final Production Build
 
-Premium app-style personal brand website for Jerry Nnamdi Offorka.
+This is the production-ready static app for GitHub Pages.
 
-## Main upgrades included
-- App-style full-screen home experience
-- Interactive joystick portrait navigation
-- Three-mode theme engine: Night → Day → Aura
-- Theme saved with localStorage
-- Fixed glass bottom navigation
-- Premium calm copy for mental health positioning
-- PWA support: manifest + service worker
-- Loading screen
-- Accessibility: labels, reduced-motion support, readable contrast
-- Booking flow page with calendar placeholders
-- Contact page with WhatsApp, email, LinkedIn and QR placeholder
-- Learning Hub for books, podcast, videos, courses and library links
+## Replace assets
+- `assets/images/jerry-profile.jpg` — center portrait.
+- `assets/images/jerry-background.webp` — cinematic full-screen background.
 
-## Replace images
-- `assets/images/jerry-profile.jpg` — center portrait
-- `assets/images/jerry-background.webp` — full background image
+## Booking
+Open `booking.html` and replace:
+`https://calendly.com/YOUR-CALENDLY-LINK`
+with your real Calendly link.
 
-## Replace links
-Search for `href="#"` and replace placeholders with real links.
+Recommended free booking tool: Calendly. It handles calendar sync, confirmations, reminders, time zones, rescheduling and mobile booking.
 
-## Recommended booking tools
-Calendly, Google Calendar Appointment Schedule, TidyCal, Cal.com, or Microsoft Bookings.
+## Deployment on GitHub Pages
+Upload all files to your repository root and enable Pages from the main branch.
 
-## Deploy to GitHub Pages
-Upload all files to your repository root and enable GitHub Pages from the repository settings.
-
-
-V13 update: converted core page content to first-person voice for a warmer, more personal mental-health consultant brand tone. About page is now positioned as My Mission. Contact page is now Connect.
+## App features
+- Mobile-first app layout.
+- Desktop responsive layout.
+- Interactive joystick portrait.
+- Theme toggle: Night, Day, Aura.
+- Fixed glass bottom dock.
+- PWA manifest and service worker.
+- First-person premium content.
+- SpeakOut integrated as the foundation behind the mission.

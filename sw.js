@@ -1,5 +1,4 @@
-const CACHE='jerry-hub-v12';
-const ASSETS=['./','index.html','about.html','speaking.html','consulting.html','media.html','booking.html','contact.html','css/style.css','js/main.js','manifest.json','assets/images/jerry-profile.jpg','assets/images/jerry-background.webp'];
-self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).catch(()=>{}));self.skipWaiting();});
-self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))));self.clients.claim();});
-self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).catch(()=>caches.match('index.html'))));});
+const CACHE = 'offorka-v1';
+const ASSETS = ['./','./index.html','./css/style.css','./js/main.js','./assets/images/jerry-background.webp','./assets/images/jerry-profile.jpg'];
+self.addEventListener('install', e => e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS))));
+self.addEventListener('fetch', e => e.respondWith(caches.match(e.request).then(r => r || fetch(e.request))));
