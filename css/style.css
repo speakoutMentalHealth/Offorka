@@ -513,7 +513,7 @@ html[data-theme='day'] .signature-quote{color:#0f172a;text-shadow:0 3px 18px rgb
   right:18px;
   bottom:calc(var(--dock-h) + var(--safe-bottom) + 112px);
   z-index:12;
-  width:100px;
+  width:180px;
   min-height:48px;
   border-radius:24px;
   padding:0 16px;
@@ -701,7 +701,7 @@ html[data-theme='day'] .bottom-dock a{color:#475569}
   .node strong{font-size:clamp(.50rem,2.05vw,.67rem)}
   .bottom-dock a span{display:none}
   .bottom-dock svg{width:27px;height:27px}
-  .floating-book{bottom:calc(var(--dock-h) + var(--safe-bottom) + 18px);right:10px;width:100px;min-height:38px;font-size:.8rem}
+  .floating-book{bottom:calc(var(--dock-h) + var(--safe-bottom) + 18px);right:14px;width:154px;min-height:42px;font-size:.8rem}
 }
 
 @media(max-width:390px){
