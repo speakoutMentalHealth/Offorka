@@ -1,33 +1,126 @@
-(function(){
-  const root=document.documentElement;
-  const themes=['night','day','aura'];
-  const themeIcon={night:'☾',day:'☀',aura:'✦'};
-  const saved=localStorage.getItem('jerryTheme')||'night';
-  root.dataset.theme=themes.includes(saved)?saved:'night';
-  function syncTheme(){document.querySelectorAll('[data-theme-toggle]').forEach(b=>{b.textContent=themeIcon[root.dataset.theme]||'☾';b.setAttribute('aria-label','Theme: '+root.dataset.theme+'. Tap to change theme');});}
-  syncTheme();
-  document.addEventListener('click',e=>{const b=e.target.closest('[data-theme-toggle]'); if(!b) return; const i=(themes.indexOf(root.dataset.theme)+1)%themes.length; root.dataset.theme=themes[i]; localStorage.setItem('jerryTheme',themes[i]); syncTheme();});
-  window.addEventListener('load',()=>setTimeout(()=>document.querySelector('.preloader')?.classList.add('done'),450));
-  if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
+const $ = (q, root = document) => root.querySelector(q);
+const $$ = (q, root = document) => [...root.querySelectorAll(q)];
 
-  const launcherBtn=document.getElementById('launcherBtn'), launcher=document.getElementById('launcher'), launcherClose=document.getElementById('launcherClose');
-  launcherBtn?.addEventListener('click',()=>launcher?.classList.add('open'));
-  launcherClose?.addEventListener('click',()=>launcher?.classList.remove('open'));
-  document.addEventListener('keydown',e=>{if(e.key==='Escape') launcher?.classList.remove('open')});
+const themes = ['night', 'day', 'aura'];
+const icons = { night: '🌙', day: '☀️', aura: '✨' };
+const savedTheme = localStorage.getItem('offorka-theme') || 'night';
+document.documentElement.dataset.theme = savedTheme === 'night' ? '' : savedTheme;
 
-  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const portrait=document.getElementById('portraitControl'), system=document.getElementById('orbitalSystem');
-  if(!portrait||!system) return;
-  const nodes=[...document.querySelectorAll('.node[data-dir]')];
-  const activeLabel=document.getElementById('activeLabel');
-  const labels={up:'Public Speaking — keynotes, panels and workshops',left:'Leadership & Consulting — strategy, training and institutional support',right:'Books & Media — books, podcasts, articles and videos',down:'Book a Session — mental health consultation'};
-  const urls={up:'speaking.html',left:'consulting.html',right:'media.html',down:'booking.html'};
-  let startX=0,startY=0,dragging=false,selected=null; const maxMove=44, threshold=23;
-  function setActive(dir){selected=dir; nodes.forEach(n=>n.classList.toggle('active',n.dataset.dir===dir)); if(activeLabel) activeLabel.textContent=dir?labels[dir]:'Drag the centre portrait to choose a service'; if(dir&&navigator.vibrate&&!reduced) navigator.vibrate(8);}
-  function direction(dx,dy){if(Math.hypot(dx,dy)<threshold)return null; return Math.abs(dx)>Math.abs(dy)?(dx>0?'right':'left'):(dy>0?'down':'up');}
-  function move(x0,y0){const dx=x0-startX,dy=y0-startY,mag=Math.hypot(dx,dy)||1,lim=Math.min(maxMove,mag),x=dx/mag*lim,y=dy/mag*lim; portrait.style.transform=`translate(${x}px,${y}px) rotateX(${-y/7}deg) rotateY(${x/7}deg)`; portrait.style.setProperty('--px',`${50+x}%`); portrait.style.setProperty('--py',`${35+y}%`); const d=direction(dx,dy); if(d!==selected)setActive(d);}
-  portrait.addEventListener('pointerdown',e=>{dragging=true;selected=null;startX=e.clientX;startY=e.clientY;portrait.setPointerCapture(e.pointerId);portrait.style.transition='none';});
-  portrait.addEventListener('pointermove',e=>{if(dragging)move(e.clientX,e.clientY)});
-  function release(){if(!dragging)return; dragging=false; portrait.style.transition='transform .34s cubic-bezier(.2,.9,.2,1), box-shadow .25s ease'; portrait.style.transform='translate(0,0) rotateX(0) rotateY(0)'; const target=selected; setTimeout(()=>nodes.forEach(n=>n.classList.remove('active')),250); if(target&&urls[target]) setTimeout(()=>location.href=urls[target],170);}
-  portrait.addEventListener('pointerup',release); portrait.addEventListener('pointercancel',release);
-})();
+function setTheme(theme){
+  const value = theme === 'night' ? '' : theme;
+  document.documentElement.dataset.theme = value;
+  localStorage.setItem('offorka-theme', theme);
+  $$('.theme-btn').forEach(btn => btn.textContent = icons[theme]);
+}
+setTheme(savedTheme);
+
+$$('.theme-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const current = localStorage.getItem('offorka-theme') || 'night';
+    setTheme(themes[(themes.indexOf(current) + 1) % themes.length]);
+  });
+});
+
+window.addEventListener('load', () => {
+  setTimeout(() => $('.preloader')?.classList.add('done'), 500);
+});
+
+const launcher = $('#launcher');
+$$('[data-open-launcher]').forEach(btn => btn.addEventListener('click', () => launcher?.classList.add('open')));
+$$('[data-close-launcher]').forEach(btn => btn.addEventListener('click', () => launcher?.classList.remove('open')));
+
+const reflections = [
+  'Every meaningful change begins with a conversation.',
+  'Strong minds create stronger communities.',
+  'Healing begins when people feel heard.',
+  'Compassion is the beginning of leadership.',
+  'Every voice deserves hope.'
+];
+const quote = $('#dailyReflection');
+let quoteIndex = 0;
+if(quote){
+  quote.textContent = reflections[0];
+  setInterval(() => {
+    quoteIndex = (quoteIndex + 1) % reflections.length;
+    quote.animate([{opacity:1, transform:'translateY(0)'},{opacity:0, transform:'translateY(6px)'}], {duration:180, fill:'forwards'}).onfinish = () => {
+      quote.textContent = reflections[quoteIndex];
+      quote.animate([{opacity:0, transform:'translateY(-6px)'},{opacity:1, transform:'translateY(0)'}], {duration:260, fill:'forwards'});
+    };
+  }, 7000);
+}
+
+const portrait = $('#portraitControl');
+const nodes = {
+  up: $('.node-up'),
+  left: $('.node-left'),
+  right: $('.node-right'),
+  down: $('.node-down')
+};
+const routes = { up:'speaking.html', left:'consulting.html', right:'media.html', down:'booking.html' };
+const labels = {
+  up:'Public Speaking — keynotes, panels and transformational conversations',
+  left:'Leadership & Consulting — strategy, wellbeing and organizational support',
+  right:'Learning Hub — books, videos, podcasts and resources',
+  down:'Book a Session — schedule a mental health consultation'
+};
+const activeLabel = $('#activeLabel');
+let drag = null;
+
+function setActive(direction){
+  Object.values(nodes).forEach(n => n?.classList.remove('active'));
+  if(direction && nodes[direction]){
+    nodes[direction].classList.add('active');
+    if(activeLabel) activeLabel.textContent = labels[direction];
+  } else if(activeLabel){
+    activeLabel.textContent = 'Drag my portrait toward a service';
+  }
+}
+function getDirection(x,y){
+  const absX = Math.abs(x), absY = Math.abs(y);
+  const threshold = 26;
+  if(Math.max(absX, absY) < threshold) return null;
+  return absX > absY ? (x > 0 ? 'right' : 'left') : (y > 0 ? 'down' : 'up');
+}
+function movePortrait(dx, dy){
+  const max = 38;
+  const x = Math.max(-max, Math.min(max, dx));
+  const y = Math.max(-max, Math.min(max, dy));
+  portrait.style.transform = `translate(${x}px, ${y}px) rotateX(${-y/6}deg) rotateY(${x/6}deg)`;
+  portrait.style.setProperty('--px', `${50 + x}%`);
+  portrait.style.setProperty('--py', `${38 + y}%`);
+}
+if(portrait){
+  portrait.addEventListener('pointerdown', e => {
+    drag = {x:e.clientX, y:e.clientY, direction:null};
+    portrait.setPointerCapture(e.pointerId);
+  });
+  portrait.addEventListener('pointermove', e => {
+    if(!drag) return;
+    const dx = e.clientX - drag.x;
+    const dy = e.clientY - drag.y;
+    movePortrait(dx, dy);
+    drag.direction = getDirection(dx, dy);
+    setActive(drag.direction);
+  });
+  const release = () => {
+    if(!drag) return;
+    const direction = drag.direction;
+    drag = null;
+    portrait.style.transform = '';
+    setTimeout(() => setActive(null), 200);
+    if(direction && routes[direction]) window.location.href = routes[direction];
+  };
+  portrait.addEventListener('pointerup', release);
+  portrait.addEventListener('pointercancel', release);
+}
+
+$$('.slot').forEach(slot => {
+  slot.addEventListener('click', () => {
+    $$('.slot').forEach(s => s.classList.remove('selected'));
+    slot.classList.add('selected');
+  });
+});
+
+if('serviceWorker' in navigator){
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+}
