@@ -35,3 +35,14 @@ cd ..
 firebase functions:config:set openai.key="YOUR_OPENAI_API_KEY"
 firebase deploy --only functions
 ```
+
+## Final polish update
+- Center portrait label now has a dark glass background for readability.
+- Tap center portrait once to call. No double-tap required.
+- Drag center portrait still works:
+  - Up: Public Speaking
+  - Left: Leadership & Consulting
+  - Right: Learning Hub
+  - Down: Donate
+- Center control now has stronger analog-style physical base/rim styling.
+- Inner page copy is now written for visitors, not for backend instructions.
