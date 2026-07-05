@@ -8,22 +8,20 @@ const FIREBASE_AI_ENDPOINT = "https://us-central1-speaakout-portal.cloudfunction
 function applyTheme(theme){
   document.documentElement.dataset.theme = theme === "day" ? "day" : "";
   localStorage.setItem("offorka-theme", theme);
-  const btn = $("#themeTrigger");
+  const btn = $("#themeButton") || $("#themeTrigger");
   if(btn) btn.textContent = theme === "day" ? "☀️" : "🌙";
 }
 applyTheme(localStorage.getItem("offorka-theme") || "night");
 
-$("#themeTrigger")?.addEventListener("click", () => {
-  const next = document.documentElement.dataset.theme === "day" ? "night" : "day";
-  applyTheme(next);
-});
+$("#themeButton")?.addEventListener("click", () => applyTheme(document.documentElement.dataset.theme === "day" ? "night" : "day"));
+$("#themeTrigger")?.addEventListener("click", () => applyTheme(document.documentElement.dataset.theme === "day" ? "night" : "day"));
 
-const intro = $("#intro");
-function closeIntro(){ intro?.classList.add("done"); }
-$("#introSkip")?.addEventListener("click", closeIntro);
-window.addEventListener("load", () => setTimeout(closeIntro, 4300));
+const launch = $("#launch");
+function closeLaunch(){ launch?.classList.add("done"); }
+$("#skipLaunch")?.addEventListener("click", closeLaunch);
+window.addEventListener("load", () => setTimeout(closeLaunch, 4200));
 
-$("#menuTrigger")?.addEventListener("click", () => {
+$("#menuButton")?.addEventListener("click", () => {
   $("#drawer")?.classList.add("open");
   $("#drawer")?.setAttribute("aria-hidden","false");
 });
@@ -37,7 +35,7 @@ $$("[data-donate]").forEach(el => el.addEventListener("click", e => {
   window.open(PAYSTACK_DONATION_LINK, "_blank", "noopener,noreferrer");
 }));
 
-/* Jerry+ AI */
+/* AI modal */
 const aiModal = $("#aiModal");
 const aiMessages = $("#aiMessages");
 const aiQuestion = $("#aiQuestion");
@@ -52,6 +50,7 @@ function closeAI(){
 }
 $$("[data-open-ai]").forEach(el => el.addEventListener("click", e => { e.preventDefault(); openAI(); }));
 $$("[data-close-ai], .modal-backdrop").forEach(el => el.addEventListener("click", closeAI));
+
 function addMessage(role, text){
   const div = document.createElement("div");
   div.className = `ai-message ${role}`;
@@ -59,6 +58,7 @@ function addMessage(role, text){
   aiMessages?.appendChild(div);
   if(aiMessages) aiMessages.scrollTop = aiMessages.scrollHeight;
 }
+
 $("#aiForm")?.addEventListener("submit", async e => {
   e.preventDefault();
   const q = aiQuestion.value.trim();
@@ -84,65 +84,80 @@ $("#aiForm")?.addEventListener("submit", async e => {
   }
 });
 
-/* Restored joystick: drag → label/highlight → release opens */
-const joystick = $("#joystick");
-if(joystick){
-  const joyCopy = $("#joyCopy");
+/* Clean joystick: one tap call, drag release navigation */
+const stick = $("#controlStick");
+if(stick){
+  const label = $("#stickLabel");
   const targets = {
-    up: {label:"Public Speaking", url:"speaking.html", el:$(".sphere-up")},
-    left: {label:"Leadership & Consulting", url:"consulting.html", el:$(".sphere-left")},
-    right: {label:"Learning Hub", url:"media.html", el:$(".sphere-right")},
-    down: {label:"Donate", donate:true, el:$(".sphere-down")}
+    up: {label:"Public Speaking", url:"speaking.html", el:$(".orb-up")},
+    left: {label:"Leadership & Consulting", url:"consulting.html", el:$(".orb-left")},
+    right: {label:"Learning Hub", url:"media.html", el:$(".orb-right")},
+    down: {label:"Donate", donate:true, el:$(".orb-down")}
   };
-  let start = null, dragging = false, active = null, distance = 0, lastTap = 0;
 
-  function resetCopy(){
-    if(joyCopy) joyCopy.innerHTML = `<strong>Let’s Connect</strong><small>Tap to call · Drag to explore</small>`;
+  let start = null;
+  let dragging = false;
+  let active = null;
+  let distance = 0;
+
+  function defaultLabel(){
+    if(label) label.innerHTML = `<strong>Let’s Connect</strong><small>Tap to call · Drag to explore</small>`;
   }
+
   function setActive(dir){
     active = dir;
     Object.values(targets).forEach(t => t.el?.classList.remove("selected"));
     if(dir && targets[dir]){
       targets[dir].el?.classList.add("selected");
-      if(joyCopy) joyCopy.innerHTML = `<strong>${targets[dir].label}</strong><small>Release to open</small>`;
-    }else resetCopy();
+      if(label) label.innerHTML = `<strong>${targets[dir].label}</strong><small>Release to open</small>`;
+    }else defaultLabel();
   }
-  function direction(dx,dy){
-    const d = Math.hypot(dx,dy);
+
+  function getDir(dx, dy){
+    const d = Math.hypot(dx, dy);
     if(d < 32) return null;
     return Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? "right" : "left") : (dy > 0 ? "down" : "up");
   }
 
-  joystick.addEventListener("pointerdown", e => {
-    dragging = true; distance = 0; active = null;
+  stick.addEventListener("pointerdown", e => {
+    dragging = true;
+    distance = 0;
+    active = null;
     start = {x:e.clientX, y:e.clientY};
-    joystick.setPointerCapture(e.pointerId);
-    joystick.style.transition = "none";
+    stick.setPointerCapture(e.pointerId);
+    stick.style.transition = "none";
   });
 
-  joystick.addEventListener("pointermove", e => {
+  stick.addEventListener("pointermove", e => {
     if(!dragging || !start) return;
+
     const rawDx = e.clientX - start.x;
     const rawDy = e.clientY - start.y;
     distance = Math.hypot(rawDx, rawDy);
 
-    let dx = rawDx, dy = rawDy;
-    const max = 36, mag = Math.max(1,distance);
-    if(mag > max){ dx = dx / mag * max; dy = dy / mag * max; }
+    let dx = rawDx;
+    let dy = rawDy;
+    const max = 36;
+    const mag = Math.max(1, distance);
 
-    joystick.style.transform = `translate3d(${dx}px,${dy}px,64px) rotateX(${-dy/7}deg) rotateY(${dx/7}deg) scale(1.025)`;
-    joystick.style.setProperty("--px", `${50 + dx}%`);
-    joystick.style.setProperty("--py", `${50 + dy}%`);
-    setActive(direction(rawDx, rawDy));
+    if(mag > max){
+      dx = dx / mag * max;
+      dy = dy / mag * max;
+    }
+
+    stick.style.transform = `translate3d(${dx}px,${dy}px,68px) rotateX(${-dy/7}deg) rotateY(${dx/7}deg) scale(1.025)`;
+    stick.style.setProperty("--px", `${50 + dx}%`);
+    stick.style.setProperty("--py", `${50 + dy}%`);
+    setActive(getDir(rawDx, rawDy));
   });
 
-  function end(){
+  function endStick(){
     if(!dragging) return;
     dragging = false;
     const chosen = active;
 
-    joystick.style.transition = "transform .34s cubic-bezier(.18,.9,.22,1.15)";
-    joystick.style.transform = "translate3d(0,0,0) rotateX(0deg) rotateY(0deg)";
+    stick.style.transition = "transform .34s cubic-bezier(.18,.9,.22,1.15)";
+    stick.style.transform = "translate3d(0,0,0) rotateX(0deg) rotateY(0deg)";
 
     if(distance < 12){
       location.href = CALL_LINK;
@@ -153,23 +168,23 @@ if(joystick){
       setTimeout(() => {
         if(targets[chosen].donate) window.open(PAYSTACK_DONATION_LINK, "_blank", "noopener,noreferrer");
         else location.href = targets[chosen].url;
-      }, 160);
+      }, 150);
     }
-    setTimeout(() => setActive(null), 260);
+
+    setTimeout(() => setActive(null), 250);
   }
 
-  joystick.addEventListener("pointerup", end);
-  joystick.addEventListener("pointercancel", end);
+  stick.addEventListener("pointerup", endStick);
+  stick.addEventListener("pointercancel", endStick);
 }
 
-/* Desktop spatial effect only */
+/* Desktop spatial depth */
 if(matchMedia("(pointer:fine)").matches){
-  const app = $("#app");
-  const stage = $(".stage");
-  app?.addEventListener("pointermove", e => {
+  const center = $("#commandCenter");
+  $("#app")?.addEventListener("pointermove", e => {
     const x = (e.clientX / innerWidth - .5) * 2;
     const y = (e.clientY / innerHeight - .5) * 2;
-    if(stage) stage.style.transform = `rotateX(${y * -3}deg) rotateY(${x * 4}deg)`;
+    if(center) center.style.transform = `rotateX(${y * -3}deg) rotateY(${x * 4}deg)`;
   });
 }
 
