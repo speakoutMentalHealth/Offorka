@@ -5,24 +5,26 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="theme-color" content="#020611" />
   <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
   <title>Consulting | OFFORKA OS</title>
 </head>
 <body>
   <main class="page" id="app">
-    <div class="bg bg-base"></div><div class="bg bg-portrait"></div><div class="bg bg-depth"></div><div class="bg bg-stars"></div><div class="bg bg-aurora"></div>
+    <div class="scene scene-city"></div><div class="scene scene-portrait"></div><div class="scene scene-stars"></div><div class="scene scene-aurora"></div><div class="scene scene-vignette"></div>
 
     <section class="page-shell">
       <header class="page-top">
         <a class="back" href="index.html" aria-label="Back home">‹</a>
         <div class="page-title"><h1>Jerry Nnamdi Offorka</h1><p>Consulting</p></div>
-        <button class="top-icon theme-trigger" id="themeTrigger" type="button">🌙</button>
+        <button class="icon-button theme-button" id="themeButton" type="button" aria-label="Switch theme">🌙</button>
       </header>
 
       <article class="hero-card">
         <h2>Healthy systems are built by leaders who understand people.</h2>
-        <p>Consulting with Jerry focuses on helping organisations, schools, NGOs, churches, and teams create environments where people can thrive. The work is strategic, practical, and people-centered. It can support programme design, wellbeing strategy, leadership development, mental health awareness, and stronger community engagement.</p>
+        <p>Consulting with Jerry focuses on helping organisations, schools, NGOs, churches, and teams create environments where people can thrive. The work is strategic, practical, and people-centered.</p>
       </article>
 
       <article class="content-card">
@@ -38,22 +40,23 @@
       </section>
     </section>
 
-    <nav class="dock" aria-label="Primary navigation">
+    <nav class="dock" aria-label="Main navigation">
       <a href="about.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.8-4.2 5-6 8-6s6.2 1.8 8 6"/></svg><span>About</span></a>
       <a href="speakout.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14 0 18M12 3c-3 3.5-3 14 0 18"/></svg><span>SpeakOut</span></a>
-      <a class="home-dot" href="index.html"><svg viewBox="0 0 24 24"><path d="M3 10.8 12 3l9 7.8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg><span>Home</span></a>
+      <a class="dock-home" href="index.html"><svg viewBox="0 0 24 24"><path d="M3 10.8 12 3l9 7.8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg><span>Home</span></a>
       <button data-open-ai type="button"><svg viewBox="0 0 24 24"><path d="M12 3v3"/><rect x="5" y="7" width="14" height="11" rx="4"/><path d="M9 12h.01M15 12h.01M9 16h6"/></svg><span>Jerry AI</span></button>
       <a href="contact.html"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg><span>Contact</span></a>
     </nav>
 
     <section class="ai-modal" id="aiModal" aria-hidden="true">
-      <button class="modal-backdrop" data-close-ai type="button"></button>
+      <button class="modal-backdrop" data-close-ai type="button" aria-label="Close Jerry AI"></button>
       <article class="ai-card">
-        <button class="modal-close" data-close-ai type="button">×</button>
-        <div class="ai-avatar">JO</div><h2>Jerry+ AI</h2>
+        <button class="modal-close" data-close-ai type="button" aria-label="Close">×</button>
+        <div class="ai-avatar">JO</div>
+        <h2>Jerry+ AI</h2>
         <p>Ask about wellbeing, leadership, MindCheck, SpeakOut, booking, speaking, or support.</p>
         <div class="ai-messages" id="aiMessages"><div class="ai-message assistant">Welcome. I’m Jerry+. How can I support you today?</div></div>
-        <form class="ai-form" id="aiForm"><textarea id="aiQuestion" rows="3" placeholder="Type your question..."></textarea><button class="send-btn" type="submit">Send</button></form>
+        <form class="ai-form" id="aiForm"><textarea id="aiQuestion" rows="3" placeholder="Type your question..."></textarea><button class="send-button" type="submit">Send</button></form>
       </article>
     </section>
   </main>

@@ -11,95 +11,110 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
 
-  <title>OFFORKA OS | Jerry Nnamdi Offorka</title>
-  <meta name="description" content="Jerry Nnamdi Offorka: mental health consultant, speaker, leadership consultant, and founder of SpeakOut Mental Health Outreach." />
+  <title>OFFORKA OS v5.0 | Jerry Nnamdi Offorka</title>
+  <meta name="description" content="OFFORKA OS — Jerry Nnamdi Offorka, Mental Health Consultant, speaker, leadership consultant, and founder of SpeakOut Mental Health Outreach." />
 </head>
 
 <body class="home">
-  <section class="intro" id="intro" aria-label="OFFORKA OS introduction">
-    <div class="intro-stars"></div>
-    <div class="intro-beam"></div>
-    <div class="intro-mark">JO</div>
-    <div class="intro-orbit"><i></i><i></i><i></i></div>
-    <p class="intro-text">Every meaningful change begins with a conversation.</p>
-    <button class="intro-skip" id="introSkip" type="button">Enter</button>
+  <section class="launch" id="launch" aria-label="OFFORKA OS launch sequence">
+    <div class="launch-stars"></div>
+    <div class="launch-light"></div>
+    <div class="launch-mark">JO</div>
+    <div class="launch-rings"><i></i><i></i><i></i></div>
+    <p>Every meaningful change begins with a conversation.</p>
+    <button id="skipLaunch" type="button">Enter</button>
   </section>
 
-  <main class="os" id="app">
-    <div class="bg bg-base"></div>
-    <div class="bg bg-portrait"></div>
-    <div class="bg bg-depth"></div>
-    <div class="bg bg-stars"></div>
-    <div class="bg bg-aurora"></div>
+  <main class="offorka" id="app">
+    <div class="scene scene-city"></div>
+    <div class="scene scene-portrait"></div>
+    <div class="scene scene-stars"></div>
+    <div class="scene scene-aurora"></div>
+    <div class="scene scene-vignette"></div>
 
-    <header class="topbar">
-      <button class="top-icon menu-trigger" id="menuTrigger" type="button" aria-label="Open menu">
+    <header class="os-header">
+      <button class="icon-button menu-button" id="menuButton" type="button" aria-label="Open menu">
         <span></span><span></span><span></span><span></span>
       </button>
 
-      <section class="brand" aria-label="Jerry Nnamdi Offorka">
+      <section class="identity" aria-label="Jerry Nnamdi Offorka">
         <h1>Jerry Nnamdi Offorka</h1>
         <p>Mental Health Consultant</p>
-        <small>Founder · SpeakOut Mental Health Outreach</small>
       </section>
 
-      <button class="top-icon theme-trigger" id="themeTrigger" type="button" aria-label="Change theme">🌙</button>
+      <button class="icon-button theme-button" id="themeButton" type="button" aria-label="Switch theme">🌙</button>
     </header>
 
-    <section class="stage" aria-label="Interactive service controller">
-      <div class="ring ring-outer"></div>
-      <div class="ring ring-main"></div>
-      <div class="ring ring-inner"></div>
-      <div class="ring ring-gold"></div>
+    <section class="command-center" id="commandCenter" aria-label="OFFORKA OS command center">
+      <div class="energy energy-outer"></div>
+      <div class="energy energy-main"></div>
+      <div class="energy energy-inner"></div>
+      <div class="energy energy-gold"></div>
 
-      <span class="spark spark-a"></span>
-      <span class="spark spark-b"></span>
-      <span class="spark spark-c"></span>
-      <span class="spark spark-d"></span>
+      <span class="light-dot dot-one"></span>
+      <span class="light-dot dot-two"></span>
+      <span class="light-dot dot-three"></span>
+      <span class="light-dot dot-four"></span>
 
-      <a class="sphere sphere-up" data-dir="up" href="speaking.html" aria-label="Public speaking">
-        <span class="sphere-light"></span>
+      <a class="service-orb orb-up" data-dir="up" href="speaking.html" aria-label="Public speaking">
+        <span class="orb-glass"></span>
         <svg viewBox="0 0 24 24"><path d="M12 3v10"/><path d="M8 7h8"/><path d="M8 21h8"/><path d="M12 13v8"/></svg>
         <b>Public<br>Speaking</b>
       </a>
 
-      <a class="sphere sphere-left" data-dir="left" href="consulting.html" aria-label="Leadership and consulting">
-        <span class="sphere-light"></span>
+      <a class="service-orb orb-left" data-dir="left" href="consulting.html" aria-label="Leadership and consulting">
+        <span class="orb-glass"></span>
         <svg viewBox="0 0 24 24"><path d="M4 18V9"/><path d="M9 18V5"/><path d="M14 18v-8"/><path d="M19 18V7"/><path d="M3 19h18"/></svg>
         <b>Leadership &<br>Consulting</b>
       </a>
 
-      <a class="sphere sphere-right" data-dir="right" href="media.html" aria-label="Learning hub">
-        <span class="sphere-light"></span>
+      <a class="service-orb orb-right" data-dir="right" href="media.html" aria-label="Learning hub">
+        <span class="orb-glass"></span>
         <svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v18H6.5A2.5 2.5 0 0 1 4 18.5z"/><path d="M8 7h8M8 11h8"/></svg>
         <b>Learning<br>Hub</b>
       </a>
 
-      <button class="sphere sphere-down" data-dir="down" data-donate type="button" aria-label="Donate">
-        <span class="sphere-light"></span>
+      <button class="service-orb orb-down" data-dir="down" data-donate type="button" aria-label="Donate to SpeakOut">
+        <span class="orb-glass"></span>
         <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
         <b>Donate</b>
       </button>
 
-      <button class="joystick" id="joystick" type="button" aria-label="Tap to call or drag toward a service">
-        <img src="images/jerry-profile.jpg" alt="Jerry Nnamdi Offorka" draggable="false" />
-        <span class="joy-glass"></span>
-        <span class="joy-halo"></span>
-        <span class="joy-copy" id="joyCopy">
+      <button class="control-stick" id="controlStick" type="button" aria-label="Tap to call or drag toward a service">
+        <span class="stick-base"></span>
+        <span class="stick-rim"></span>
+        <span class="stick-face">
+          <img src="images/jerry-profile.jpg" alt="Jerry Nnamdi Offorka" draggable="false" />
+          <span class="stick-reflection"></span>
+        </span>
+        <span class="stick-label" id="stickLabel">
           <strong>Let’s Connect</strong>
           <small>Tap to call · Drag to explore</small>
         </span>
       </button>
     </section>
 
-    <button class="jerry-plus" data-open-ai type="button" aria-label="Speak to Jerry AI">
+    <button class="ai-float" data-open-ai type="button" aria-label="Open Jerry Plus AI">
       <span>
         <svg viewBox="0 0 24 24"><path d="M12 3v3"/><rect x="5" y="7" width="14" height="11" rx="4"/><path d="M9 12h.01M15 12h.01M9 16h6"/></svg>
       </span>
       <b>Jerry+ AI</b>
     </button>
 
-    <nav class="dock" aria-label="Primary navigation">
+    <aside class="desktop-card desktop-left">
+      <span>OFFORKA OS</span>
+      <h2>Digital calm, built around real human needs.</h2>
+      <p>Speak, reflect, book, learn, give, and connect through one premium experience.</p>
+    </aside>
+
+    <aside class="desktop-card desktop-right">
+      <span>Quick paths</span>
+      <a href="https://mindcheck.speakoutmentalhealth.org/" target="_blank" rel="noopener">MindCheck</a>
+      <a href="booking.html">Book a Session</a>
+      <button data-donate type="button">Support SpeakOut</button>
+    </aside>
+
+    <nav class="dock" aria-label="Main navigation">
       <a href="about.html">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.8-4.2 5-6 8-6s6.2 1.8 8 6"/></svg>
         <span>About</span>
@@ -108,7 +123,7 @@
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14 0 18M12 3c-3 3.5-3 14 0 18"/></svg>
         <span>SpeakOut</span>
       </a>
-      <a class="active home-dot" href="index.html">
+      <a class="dock-home active" href="index.html">
         <svg viewBox="0 0 24 24"><path d="M3 10.8 12 3l9 7.8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
         <span>Home</span>
       </a>
@@ -122,19 +137,6 @@
       </a>
     </nav>
 
-    <aside class="desktop-panel panel-left">
-      <span>Welcome</span>
-      <h2>Digital Calm for real people.</h2>
-      <p>A premium space for mental wellbeing, leadership clarity, speaking, consulting, SpeakOut impact, and meaningful connection.</p>
-    </aside>
-
-    <aside class="desktop-panel panel-right">
-      <span>Quick Access</span>
-      <a href="https://mindcheck.speakoutmentalhealth.org/" target="_blank" rel="noopener">MindCheck</a>
-      <a href="booking.html">Reserve Session</a>
-      <a href="#" data-donate>Support SpeakOut</a>
-    </aside>
-
     <section class="drawer" id="drawer" aria-hidden="true">
       <button class="drawer-backdrop" data-close-menu type="button" aria-label="Close menu"></button>
       <div class="drawer-panel">
@@ -142,6 +144,7 @@
         <a href="speaking.html">Public Speaking</a>
         <a href="consulting.html">Leadership & Consulting</a>
         <a href="media.html">Learning Hub</a>
+        <a href="booking.html">Book a Session</a>
         <a href="https://mindcheck.speakoutmentalhealth.org/" target="_blank" rel="noopener">MindCheck</a>
         <button data-donate type="button">Donate</button>
       </div>
@@ -150,7 +153,7 @@
     <section class="ai-modal" id="aiModal" aria-hidden="true">
       <button class="modal-backdrop" data-close-ai type="button" aria-label="Close Jerry AI"></button>
       <article class="ai-card">
-        <button class="modal-close" data-close-ai type="button">×</button>
+        <button class="modal-close" data-close-ai type="button" aria-label="Close">×</button>
         <div class="ai-avatar">JO</div>
         <h2>Jerry+ AI</h2>
         <p>Ask about wellbeing, leadership, MindCheck, SpeakOut, booking, speaking, or support.</p>
@@ -159,7 +162,7 @@
         </div>
         <form class="ai-form" id="aiForm">
           <textarea id="aiQuestion" rows="3" placeholder="Type your question..."></textarea>
-          <button class="send-btn" type="submit">Send</button>
+          <button class="send-button" type="submit">Send</button>
         </form>
         <small>Educational guidance only. For emergencies, contact local emergency support immediately.</small>
       </article>
