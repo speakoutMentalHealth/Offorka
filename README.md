@@ -1,44 +1,29 @@
-# OFFORKA OS — Phase A to E Build
+# OFFORKA OS v3.0
 
-This bundle includes the home experience and the Firebase backend starter for Jerry+ AI.
-
-## Files
-- `index.html`
-- `css/style.css`
-- `js/main.js`
-- `functions/index.js`
-- `functions/package.json`
-- `firebase.json`
-- `manifest.json`
-- `sw.js`
+## What is included
+- Full premium home page
+- Updated premium pages
+- Unified design system
+- Cinematic intro that plays every open/refresh
+- Removed heavy black control backgrounds
+- Improved sunrise/light theme
+- Jerry+ AI modal
+- Firebase Cloud Function backend starter
+- Paystack donation integration
+- MindCheck link
+- PWA manifest + service worker
 
 ## Required images
-Place these inside `/images`:
+Place inside `/images`:
 - `jerry-profile.jpg`
 - `jerry-background.webp`
 
-## Active features
-- Cinematic intro plays every time the page opens/refreshed.
-- 3D joystick/service orb UI.
-- Jerry+ AI modal.
-- Firebase Cloud Function backend for OpenAI.
-- Paystack donation link.
-- MindCheck link.
-- PWA/offline caching.
-- Theme engine.
-- Parallax/gyroscope motion.
-- Premium tap physics and light sweep.
+## Active links
+- Donation: https://paystack.shop/pay/speakout-donate
+- MindCheck: https://mindcheck.speakoutmentalhealth.org/
+- Jerry+ function endpoint: https://us-central1-speaakout-portal.cloudfunctions.net/askJerry
 
-## Update before deploy
-In `js/main.js`, update:
-```js
-const FIREBASE_AI_ENDPOINT = "https://us-central1-speaakout-portal.cloudfunctions.net/askJerry";
-```
-This is already set for your project ID.
-
-## Firebase setup for Jerry+ AI
-From this project folder:
-
+## Firebase deployment
 ```bash
 npm install -g firebase-tools
 firebase login
@@ -50,13 +35,6 @@ firebase functions:config:set openai.key="YOUR_OPENAI_API_KEY"
 firebase deploy --only functions
 ```
 
-If using newer Firebase environment secrets, you may also use:
-```bash
-firebase functions:secrets:set OPENAI_API_KEY
-```
-
-Then adjust the function if you want secret-based deployment.
-
 ## Important
-Your ChatGPT Plus subscription does not provide API credits for website integrations. You need an OpenAI API key from the OpenAI developer platform.
-Never put the OpenAI API key in `index.html` or `js/main.js`.
+ChatGPT Plus does not include API access for your website. You still need an OpenAI API key for Jerry+.
+Never put the OpenAI key in frontend JavaScript.
