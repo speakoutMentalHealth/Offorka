@@ -16,7 +16,6 @@
 </head>
 
 <body class="home">
-  <!-- WOW INTRO: shown once per browser session -->
   <section class="wow-intro" id="wowIntro" aria-label="OFFORKA OS welcome introduction">
     <div class="intro-space"></div>
     <div class="intro-stars"></div>
@@ -44,15 +43,16 @@
   </section>
 
   <main class="app" id="appRoot" aria-label="OFFORKA OS home">
-    <!-- Cinematic background layers -->
-    <div class="bg-scene"></div>
-    <div class="city-silhouette"></div>
-    <div class="portrait-shadow"></div>
-    <div class="city-lights"></div>
-    <div class="light-beams"></div>
-    <div class="star-field"></div>
-    <div class="ambient-glow"></div>
-    <div class="bg-shade"></div>
+    <div class="spatial-stage" id="spatialStage">
+      <div class="bg-scene layer-depth" data-depth="0.04"></div>
+      <div class="city-silhouette layer-depth" data-depth="0.08"></div>
+      <div class="portrait-shadow layer-depth" data-depth="0.10"></div>
+      <div class="city-lights"></div>
+      <div class="light-beams"></div>
+      <div class="star-field layer-depth" data-depth="0.14"></div>
+      <div class="ambient-glow"></div>
+      <div class="bg-shade"></div>
+    </div>
 
     <header class="app-header">
       <button class="glass-control launcher-btn" data-open-launcher aria-label="Open menu">
@@ -69,7 +69,7 @@
     </header>
 
     <section class="home-grid" aria-label="OFFORKA OS command center">
-      <aside class="intro-panel">
+      <aside class="intro-panel glass-card layer-depth" data-depth="0.12">
         <span class="eyebrow">Welcome</span>
         <h2>Every conversation can transform a life.</h2>
         <p>I help people think clearly, lead confidently and live with greater emotional strength.</p>
@@ -78,7 +78,7 @@
         </div>
       </aside>
 
-      <section class="hub" aria-label="Interactive 3D service hub">
+      <section class="hub layer-depth" data-depth="0.18" aria-label="Interactive 3D service hub">
         <i class="orbit orbit-1"></i>
         <i class="orbit orbit-2"></i>
         <i class="orbit orbit-3"></i>
@@ -93,38 +93,28 @@
 
         <a class="node node-up" href="speaking.html" data-direction="up">
           <span class="orb-depth"></span>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 3v10"/><path d="M8 7h8"/><path d="M8 21h8"/><path d="M12 13v8"/>
-          </svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v10"/><path d="M8 7h8"/><path d="M8 21h8"/><path d="M12 13v8"/></svg>
           <strong>Public Speaking</strong>
           <small>Keynotes</small>
         </a>
 
         <a class="node node-left" href="consulting.html" data-direction="left">
           <span class="orb-depth"></span>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4 18V9"/><path d="M9 18V5"/><path d="M14 18v-8"/><path d="M19 18V7"/><path d="M3 19h18"/>
-          </svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18V9"/><path d="M9 18V5"/><path d="M14 18v-8"/><path d="M19 18V7"/><path d="M3 19h18"/></svg>
           <strong>Leadership & Consulting</strong>
           <small>Wellbeing</small>
         </a>
 
         <a class="node node-right" href="media.html" data-direction="right">
           <span class="orb-depth"></span>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v18H6.5A2.5 2.5 0 0 1 4 18.5z"/>
-            <path d="M8 7h8M8 11h8"/>
-          </svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v18H6.5A2.5 2.5 0 0 1 4 18.5z"/><path d="M8 7h8M8 11h8"/></svg>
           <strong>Learning Hub</strong>
           <small>Resources</small>
         </a>
 
         <a class="node node-down" href="booking.html" data-direction="down">
           <span class="orb-depth"></span>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M7 3v4M17 3v4M4 8h16M5 5h14v16H5z"/>
-            <path d="M8 12h3M13 12h3M8 16h3"/>
-          </svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v4M17 3v4M4 8h16M5 5h14v16H5z"/><path d="M8 12h3M13 12h3M8 16h3"/></svg>
           <strong>Reserve Session</strong>
           <small>Consultation</small>
         </a>
@@ -135,14 +125,11 @@
           <span class="portrait-glow"></span>
           <span class="portrait-glass"></span>
           <span class="portrait-ripple"></span>
-          <div class="portrait-caption" id="activeLabel">
-            Let’s Connect
-            <small>Tap to call · Drag to explore</small>
-          </div>
+          <div class="portrait-caption" id="activeLabel">Let’s Connect<small>Tap to call · Drag to explore</small></div>
         </button>
       </section>
 
-      <aside class="impact-panel">
+      <aside class="impact-panel glass-card layer-depth" data-depth="0.12">
         <span class="eyebrow">Impact at a Glance</span>
         <div class="impact-grid">
           <div class="stat"><b>10K+</b><span>Lives reached</span></div>
@@ -153,30 +140,26 @@
         <a class="btn secondary" href="impact.html">View Impact Dashboard</a>
       </aside>
 
-      <section class="quick-panel" aria-label="Quick access">
+      <section class="quick-panel glass-card" aria-label="Quick access">
         <h3>Quick Access</h3>
         <div class="quick-grid">
-          <a href="#" data-open-ai>Ask Jerry <span>AI</span></a>
+          <a href="#" data-open-ai>Jerry+ <span>AI</span></a>
+          <a href="https://mindcheck.speakoutmentalhealth.org/" target="_blank" rel="noopener">MindCheck</a>
           <a href="media.html">Library</a>
           <a href="events.html">Events</a>
-          <a href="assessment.html">Assessment <span>Soon</span></a>
           <a href="#" data-donate>Donate</a>
           <a href="contact.html">Voice Note</a>
           <a href="speakout.html">SpeakOut</a>
-          <a href="admin.html">Admin <span>Soon</span></a>
+          <a href="admin.html">Admin</a>
         </div>
       </section>
     </section>
 
-    <button class="ask-jerry" data-open-ai type="button" aria-label="Ask Jerry AI companion">
+    <button class="ask-jerry" data-open-ai type="button" aria-label="Open Jerry Plus AI">
       <span class="bubble">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 3v3"/>
-          <rect x="5" y="7" width="14" height="11" rx="4"/>
-          <path d="M9 12h.01M15 12h.01M9 16h6"/>
-        </svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v3"/><rect x="5" y="7" width="14" height="11" rx="4"/><path d="M9 12h.01M15 12h.01M9 16h6"/></svg>
       </span>
-      <span>Ask Jerry</span>
+      <span>Jerry+</span>
     </button>
 
     <button class="donate-float" data-donate type="button" aria-label="Donate to support the mission">
@@ -185,30 +168,11 @@
     </button>
 
     <nav class="bottom-dock" aria-label="Main navigation">
-      <a href="about.html">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.8-4.2 5-6 8-6s6.2 1.8 8 6"/></svg>
-        <span>Mission</span>
-      </a>
-
-      <a href="speakout.html">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14 0 18M12 3c-3 3.5-3 14 0 18"/></svg>
-        <span>SpeakOut</span>
-      </a>
-
-      <a class="active center-home" href="index.html">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.8 12 3l9 7.8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
-        <span>Home</span>
-      </a>
-
-      <a href="media.html">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v18H6.5A2.5 2.5 0 0 1 4 18.5z"/><path d="M8 7h8M8 11h8"/></svg>
-        <span>Learn</span>
-      </a>
-
-      <a href="contact.html">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>
-        <span>Connect</span>
-      </a>
+      <a href="about.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.8-4.2 5-6 8-6s6.2 1.8 8 6"/></svg><span>Mission</span></a>
+      <a href="speakout.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14 0 18M12 3c-3 3.5-3 14 0 18"/></svg><span>SpeakOut</span></a>
+      <a class="active center-home" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.8 12 3l9 7.8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg><span>Home</span></a>
+      <a href="media.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v18H6.5A2.5 2.5 0 0 1 4 18.5z"/><path d="M8 7h8M8 11h8"/></svg><span>Learn</span></a>
+      <a href="contact.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg><span>Connect</span></a>
     </nav>
 
     <div class="launcher" id="launcher">
@@ -219,34 +183,32 @@
         <a href="consulting.html">Consulting</a>
         <a href="media.html">Learning Hub</a>
         <a href="booking.html">Reserve Time</a>
-        <a href="#" data-open-ai>Ask Jerry</a>
-        <a href="assessment.html">Assessment</a>
+        <a href="#" data-open-ai>Jerry+</a>
+        <a href="https://mindcheck.speakoutmentalhealth.org/" target="_blank" rel="noopener">MindCheck</a>
         <a href="#" data-donate>Donate</a>
         <a href="speakout.html">SpeakOut</a>
         <a href="contact.html">Connect</a>
       </div>
     </div>
 
-    <!-- Ask Jerry modal. Static GitHub version links to ChatGPT by default.
-         Secure API integration requires a backend/serverless function. -->
-    <section class="ai-modal" id="aiModal" aria-label="Ask Jerry AI modal" aria-hidden="true">
-      <button class="modal-backdrop" data-close-ai aria-label="Close Ask Jerry"></button>
+    <section class="ai-modal" id="aiModal" aria-label="Jerry Plus AI modal" aria-hidden="true">
+      <button class="modal-backdrop" data-close-ai aria-label="Close Jerry Plus"></button>
       <div class="ai-card">
         <button class="modal-close" data-close-ai aria-label="Close">×</button>
         <div class="ai-avatar">JO</div>
-        <h2>Ask Jerry</h2>
-        <p>
-          Ask for guidance on leadership, emotional wellbeing, speaking, partnership, or the best resource to explore next.
-        </p>
+        <h2>Jerry+</h2>
+        <p>Ask about wellbeing, leadership, speaking, partnership, MindCheck, SpeakOut, or which next step is right for you.</p>
+
+        <div class="ai-messages" id="aiMessages">
+          <div class="ai-message assistant">Welcome. I’m Jerry+. How can I support you today?</div>
+        </div>
 
         <form class="ai-form" id="aiForm">
-          <textarea id="aiQuestion" rows="4" placeholder="Type your question..."></textarea>
-          <button class="btn" type="submit">Open in ChatGPT</button>
+          <textarea id="aiQuestion" rows="3" placeholder="Type your question..."></textarea>
+          <button class="btn" type="submit">Send</button>
         </form>
 
-        <small class="ai-note">
-          Educational guidance only. For emergencies, contact local emergency support immediately.
-        </small>
+        <small class="ai-note">Educational guidance only. For emergencies, contact local emergency support immediately.</small>
       </div>
     </section>
   </main>
