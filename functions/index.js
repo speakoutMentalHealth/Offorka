@@ -24,6 +24,7 @@ exports.askJerry = functions.https.onRequest(async (req, res) => {
       ],
       max_output_tokens: 450
     });
+
     res.status(200).json({ answer: response.output_text || "I’m here with you. Could you share a little more?" });
   } catch (err) {
     console.error(err);
