@@ -1,18 +1,250 @@
-const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
-const themes=['midnight','sunrise','aurora','forest'],CALL_LINK='tel:+2348118103510',themeIcons={midnight:'🌙',sunrise:'☀️',aurora:'✨',forest:'🌿'};
-function applyTheme(t){document.documentElement.dataset.theme=t==='midnight'?'':t;localStorage.setItem('offorka-theme',t);const b=$('.theme-btn');if(b)b.textContent=themeIcons[t]||'🌙'}
-applyTheme(localStorage.getItem('offorka-theme')||'midnight');
-window.addEventListener('load',()=>setTimeout(()=>$('.preloader')?.classList.add('done'),780));
-$('.theme-btn')?.addEventListener('click',()=>{const c=localStorage.getItem('offorka-theme')||'midnight';applyTheme(themes[(themes.indexOf(c)+1)%themes.length])});
-$('[data-open-launcher]')?.addEventListener('click',()=>$('#launcher')?.classList.add('open'));
-$$('[data-close-launcher],.launcher-close').forEach(b=>b.addEventListener('click',()=>$('#launcher')?.classList.remove('open')));
-const portrait=$('#portraitControl');
-if(portrait){const nodes={up:$('.node-up'),left:$('.node-left'),right:$('.node-right'),down:$('.node-down')},labels={up:'Public Speaking',left:'Leadership & Consulting',right:'Learning Hub',down:'Book a Session'},urls={up:'speaking.html',left:'consulting.html',right:'media.html',down:'booking.html'},label=$('#activeLabel');let start=null,active=null,dragging=false,dragDistance=0,lastTap=0;
-const labelDefault=()=>{if(label)label.innerHTML=`Let's Connect<small>Tap to call · Drag to explore</small>`};labelDefault();
-function setActive(d){active=d;Object.values(nodes).forEach(n=>n?.classList.remove('active'));if(d){nodes[d]?.classList.add('active');if(label)label.innerHTML=`Release to open<small>${labels[d]}</small>`}else labelDefault()}
-function getDirection(dx,dy){const d=Math.hypot(dx,dy);if(d<32)return null;return Math.abs(dx)>Math.abs(dy)?(dx>0?'right':'left'):(dy>0?'down':'up')}
-portrait.addEventListener('pointerdown',e=>{dragging=true;active=null;dragDistance=0;start={x:e.clientX,y:e.clientY};portrait.setPointerCapture(e.pointerId);portrait.style.transition='none'});
-portrait.addEventListener('pointermove',e=>{if(!dragging||!start)return;let dx=e.clientX-start.x,dy=e.clientY-start.y;dragDistance=Math.hypot(dx,dy);const max=42,mag=Math.max(1,dragDistance);if(mag>max){dx=dx/mag*max;dy=dy/mag*max}portrait.style.transform=`translate3d(${dx}px,${dy}px,48px) rotateX(${-dy/6}deg) rotateY(${dx/6}deg) scale(1.02)`;portrait.style.setProperty('--px',`${50+dx}%`);portrait.style.setProperty('--py',`${50+dy}%`);setActive(getDirection(e.clientX-start.x,e.clientY-start.y))});
-function end(){if(!dragging)return;dragging=false;const chosen=active,wasTap=!chosen&&dragDistance<12;portrait.style.transition='transform .36s cubic-bezier(.18,.9,.22,1.15)';portrait.style.transform='translate3d(0,0,0) rotateX(0deg) rotateY(0deg)';setTimeout(()=>{setActive(null);portrait.style.transition=''},230);if(wasTap){const now=Date.now();if(now-lastTap<450){location.href=CALL_LINK}else{lastTap=now;if(label)label.innerHTML=`Tap again to call<small>or drag to explore</small>`;setTimeout(()=>{if(Date.now()-lastTap>=430)labelDefault()},1100)}return}if(chosen)setTimeout(()=>{location.href=urls[chosen]},180)}
-portrait.addEventListener('pointerup',end);portrait.addEventListener('pointercancel',end)}
-if('serviceWorker'in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+const themes = ["midnight", "sunrise", "aurora", "forest"];
+const themeIcons = {
+  midnight: "🌙",
+  sunrise: "☀️",
+  aurora: "✨",
+  forest: "🌿"
+};
+
+const CALL_LINK = "tel:+2348118103510";
+
+function applyTheme(theme){
+  document.documentElement.dataset.theme = theme === "midnight" ? "" : theme;
+  localStorage.setItem("offorka-theme", theme);
+
+  const btn = $(".theme-btn");
+  if(btn) btn.textContent = themeIcons[theme] || "🌙";
+}
+
+applyTheme(localStorage.getItem("offorka-theme") || "midnight");
+
+/* ===========================
+   WOW INTRO
+=========================== */
+
+const intro = $("#wowIntro");
+const skipIntro = $("#skipIntro");
+
+function finishIntro(){
+  if(!intro) return;
+  intro.classList.add("done");
+  sessionStorage.setItem("offorka-intro-seen", "true");
+}
+
+function playIntro(){
+  if(!intro) return;
+
+  const alreadySeen = sessionStorage.getItem("offorka-intro-seen") === "true";
+
+  if(alreadySeen){
+    intro.classList.add("done");
+    return;
+  }
+
+  setTimeout(finishIntro, 6200);
+}
+
+skipIntro?.addEventListener("click", finishIntro);
+window.addEventListener("load", playIntro);
+
+/* ===========================
+   THEME
+=========================== */
+
+$(".theme-btn")?.addEventListener("click", () => {
+  const current = localStorage.getItem("offorka-theme") || "midnight";
+  const next = themes[(themes.indexOf(current) + 1) % themes.length];
+  applyTheme(next);
+});
+
+/* ===========================
+   MENU
+=========================== */
+
+$("[data-open-launcher]")?.addEventListener("click", () => {
+  $("#launcher")?.classList.add("open");
+});
+
+$$("[data-close-launcher], .launcher-close").forEach(btn => {
+  btn.addEventListener("click", () => $("#launcher")?.classList.remove("open"));
+});
+
+/* ===========================
+   JOYSTICK PORTRAIT
+=========================== */
+
+const portrait = $("#portraitControl");
+
+if(portrait){
+  const nodes = {
+    up: $(".node-up"),
+    left: $(".node-left"),
+    right: $(".node-right"),
+    down: $(".node-down")
+  };
+
+  const labels = {
+    up: "Public Speaking",
+    left: "Leadership & Consulting",
+    right: "Learning Hub",
+    down: "Book a Session"
+  };
+
+  const urls = {
+    up: "speaking.html",
+    left: "consulting.html",
+    right: "media.html",
+    down: "booking.html"
+  };
+
+  const label = $("#activeLabel");
+
+  let start = null;
+  let active = null;
+  let dragging = false;
+  let dragDistance = 0;
+  let lastTap = 0;
+
+  function labelDefault(){
+    if(label){
+      label.innerHTML = `
+        Let’s Connect
+        <small>Tap to call · Drag to explore</small>
+      `;
+    }
+  }
+
+  labelDefault();
+
+  function setActive(direction){
+    active = direction;
+
+    Object.values(nodes).forEach(node => node?.classList.remove("active"));
+
+    if(direction){
+      nodes[direction]?.classList.add("active");
+
+      if(label){
+        label.innerHTML = `
+          Release to open
+          <small>${labels[direction]}</small>
+        `;
+      }
+    }else{
+      labelDefault();
+    }
+  }
+
+  function getDirection(dx, dy){
+    const distance = Math.hypot(dx, dy);
+
+    if(distance < 32) return null;
+
+    if(Math.abs(dx) > Math.abs(dy)){
+      return dx > 0 ? "right" : "left";
+    }
+
+    return dy > 0 ? "down" : "up";
+  }
+
+  portrait.addEventListener("pointerdown", event => {
+    dragging = true;
+    active = null;
+    dragDistance = 0;
+
+    start = {
+      x: event.clientX,
+      y: event.clientY
+    };
+
+    portrait.setPointerCapture(event.pointerId);
+    portrait.style.transition = "none";
+  });
+
+  portrait.addEventListener("pointermove", event => {
+    if(!dragging || !start) return;
+
+    let dx = event.clientX - start.x;
+    let dy = event.clientY - start.y;
+
+    dragDistance = Math.hypot(dx, dy);
+
+    const max = 42;
+    const magnitude = Math.max(1, dragDistance);
+
+    if(magnitude > max){
+      dx = (dx / magnitude) * max;
+      dy = (dy / magnitude) * max;
+    }
+
+    portrait.style.transform =
+      `translate3d(${dx}px, ${dy}px, 48px) rotateX(${-dy / 6}deg) rotateY(${dx / 6}deg) scale(1.02)`;
+
+    portrait.style.setProperty("--px", `${50 + dx}%`);
+    portrait.style.setProperty("--py", `${50 + dy}%`);
+
+    setActive(getDirection(event.clientX - start.x, event.clientY - start.y));
+  });
+
+  function end(){
+    if(!dragging) return;
+
+    dragging = false;
+
+    const chosen = active;
+    const wasTap = !chosen && dragDistance < 12;
+
+    portrait.style.transition = "transform .36s cubic-bezier(.18,.9,.22,1.15)";
+    portrait.style.transform = "translate3d(0,0,0) rotateX(0deg) rotateY(0deg)";
+
+    setTimeout(() => {
+      setActive(null);
+      portrait.style.transition = "";
+    }, 230);
+
+    if(wasTap){
+      const now = Date.now();
+
+      if(now - lastTap < 450){
+        window.location.href = CALL_LINK;
+      }else{
+        lastTap = now;
+
+        if(label){
+          label.innerHTML = `
+            Tap again to call
+            <small>or drag to explore</small>
+          `;
+        }
+
+        setTimeout(() => {
+          if(Date.now() - lastTap >= 430) labelDefault();
+        }, 1100);
+      }
+
+      return;
+    }
+
+    if(chosen){
+      setTimeout(() => {
+        window.location.href = urls[chosen];
+      }, 180);
+    }
+  }
+
+  portrait.addEventListener("pointerup", end);
+  portrait.addEventListener("pointercancel", end);
+}
+
+/* ===========================
+   SERVICE WORKER
+=========================== */
+
+if("serviceWorker" in navigator){
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch(() => {});
+  });
+}
