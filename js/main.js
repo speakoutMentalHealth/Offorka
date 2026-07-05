@@ -9,7 +9,17 @@ const themeIcons = {
   forest: "🌿"
 };
 
+/* UPDATE THESE TWO LINKS */
 const CALL_LINK = "tel:+2348118103510";
+const PAYSTACK_DONATION_LINK = "https://paystack.com/pay/YOUR-DONATION-LINK";
+
+/*
+  Static GitHub Pages cannot safely call OpenAI directly because API keys must never be placed in frontend JavaScript.
+  Use one of these:
+  1. Default: open ChatGPT with a prepared prompt.
+  2. Later: connect this form to a secure backend/serverless function.
+*/
+const CHATGPT_LINK = "https://chat.openai.com/";
 
 function applyTheme(theme){
   document.documentElement.dataset.theme = theme === "midnight" ? "" : theme;
@@ -70,6 +80,59 @@ $("[data-open-launcher]")?.addEventListener("click", () => {
 
 $$("[data-close-launcher], .launcher-close").forEach(btn => {
   btn.addEventListener("click", () => $("#launcher")?.classList.remove("open"));
+});
+
+/* ===========================
+   DONATION
+=========================== */
+
+$$("[data-donate]").forEach(btn => {
+  btn.addEventListener("click", event => {
+    event.preventDefault();
+    window.open(PAYSTACK_DONATION_LINK, "_blank", "noopener,noreferrer");
+  });
+});
+
+/* ===========================
+   ASK JERRY MODAL / CHATGPT
+=========================== */
+
+const aiModal = $("#aiModal");
+const aiForm = $("#aiForm");
+const aiQuestion = $("#aiQuestion");
+
+function openAI(){
+  aiModal?.classList.add("open");
+  aiModal?.setAttribute("aria-hidden", "false");
+  setTimeout(() => aiQuestion?.focus(), 120);
+}
+
+function closeAI(){
+  aiModal?.classList.remove("open");
+  aiModal?.setAttribute("aria-hidden", "true");
+}
+
+$$("[data-open-ai]").forEach(btn => {
+  btn.addEventListener("click", event => {
+    event.preventDefault();
+    openAI();
+  });
+});
+
+$$("[data-close-ai]").forEach(btn => {
+  btn.addEventListener("click", closeAI);
+});
+
+aiForm?.addEventListener("submit", event => {
+  event.preventDefault();
+
+  const question = aiQuestion?.value.trim() || "";
+
+  const prompt = encodeURIComponent(
+    `You are helping me explore mental health, leadership, wellbeing, personal growth, or community impact through Jerry Nnamdi Offorka's platform. My question is: ${question}`
+  );
+
+  window.open(`${CHATGPT_LINK}?q=${prompt}`, "_blank", "noopener,noreferrer");
 });
 
 /* ===========================
