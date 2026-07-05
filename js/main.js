@@ -16,7 +16,7 @@ function applyTheme(theme){
 }
 applyTheme(localStorage.getItem("offorka-theme") || "midnight");
 
-/* Phase B — Intro plays every page open/refresh */
+/* Intro plays every open/refresh */
 const intro = $("#wowIntro");
 const skipIntro = $("#skipIntro");
 function finishIntro(){ if(!intro) return; intro.classList.add("done"); }
@@ -24,18 +24,15 @@ function playIntro(){ if(!intro) return; setTimeout(finishIntro, 6200); }
 skipIntro?.addEventListener("click", finishIntro);
 window.addEventListener("load", playIntro);
 
-/* Phase E — Theme */
 $(".theme-btn")?.addEventListener("click", () => {
   const current = localStorage.getItem("offorka-theme") || "midnight";
   const next = themes[(themes.indexOf(current) + 1) % themes.length];
   applyTheme(next);
 });
 
-/* Navigation */
 $("[data-open-launcher]")?.addEventListener("click", () => $("#launcher")?.classList.add("open"));
 $$("[data-close-launcher], .launcher-close").forEach(btn => btn.addEventListener("click", () => $("#launcher")?.classList.remove("open")));
 
-/* Phase D — Donation */
 $$("[data-donate]").forEach(btn => {
   btn.addEventListener("click", event => {
     event.preventDefault();
@@ -43,7 +40,7 @@ $$("[data-donate]").forEach(btn => {
   });
 });
 
-/* Phase C/D — Jerry+ AI */
+/* Jerry+ AI */
 const aiModal = $("#aiModal");
 const aiForm = $("#aiForm");
 const aiQuestion = $("#aiQuestion");
@@ -93,12 +90,11 @@ aiForm?.addEventListener("submit", async event => {
       last.textContent = data.error || "Jerry+ is temporarily unavailable. Please try again later.";
       return;
     }
-
     last.textContent = data.answer || "I’m here with you. Could you share a little more?";
   }catch(error){
     const messages = $$(".ai-message.assistant", aiMessages);
     const last = messages[messages.length - 1];
-    last.textContent = "Jerry+ is not connected yet. Please check your Firebase function deployment.";
+    last.textContent = "Jerry+ is not connected yet. Deploy the Firebase function and confirm the endpoint.";
   }
 });
 
@@ -122,7 +118,6 @@ if(portrait){
       if(label) label.innerHTML = `Release to open<small>${labels[direction]}</small>`;
     }else labelDefault();
   }
-
   function getDirection(dx, dy){
     const distance = Math.hypot(dx, dy);
     if(distance < 32) return null;
@@ -135,29 +130,24 @@ if(portrait){
     portrait.setPointerCapture(event.pointerId);
     portrait.style.transition = "none";
   });
-
   portrait.addEventListener("pointermove", event => {
     if(!dragging || !start) return;
     let dx = event.clientX - start.x, dy = event.clientY - start.y;
     dragDistance = Math.hypot(dx, dy);
     const max = 42, magnitude = Math.max(1, dragDistance);
     if(magnitude > max){ dx = (dx / magnitude) * max; dy = (dy / magnitude) * max; }
-
     portrait.style.transform = `translate3d(${dx}px, ${dy}px, 48px) rotateX(${-dy / 6}deg) rotateY(${dx / 6}deg) scale(1.02)`;
     portrait.style.setProperty("--px", `${50 + dx}%`);
     portrait.style.setProperty("--py", `${50 + dy}%`);
     setActive(getDirection(event.clientX - start.x, event.clientY - start.y));
   });
-
   function end(){
     if(!dragging) return;
     dragging = false;
     const chosen = active;
     const wasTap = !chosen && dragDistance < 12;
-
     portrait.style.transition = "transform .36s cubic-bezier(.18,.9,.22,1.15)";
     portrait.style.transform = "translate3d(0,0,0) rotateX(0deg) rotateY(0deg)";
-
     setTimeout(() => { setActive(null); portrait.style.transition = ""; }, 230);
 
     if(wasTap){
@@ -170,15 +160,13 @@ if(portrait){
       }
       return;
     }
-
     if(chosen) setTimeout(() => { window.location.href = urls[chosen]; }, 180);
   }
-
   portrait.addEventListener("pointerup", end);
   portrait.addEventListener("pointercancel", end);
 }
 
-/* Phase E — Mouse/phone parallax */
+/* Spatial parallax */
 const stage = $("#appRoot");
 const layers = $$(".layer-depth");
 function moveLayers(x, y){
