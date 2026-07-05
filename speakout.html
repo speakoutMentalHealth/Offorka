@@ -3,39 +3,59 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#020611" />
+  <link rel="manifest" href="manifest.json" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
   <title>SpeakOut | OFFORKA OS</title>
 </head>
 <body>
-  <main class="phone-app page-lite">
-    <div class="bg bg-base"></div><div class="bg bg-portrait"></div><div class="bg bg-stars"></div><div class="bg bg-glow"></div>
-    <header class="topbar">
-      <a class="icon-control back-lite" href="index.html" aria-label="Back">‹</a>
-      <section class="brand"><h1>Jerry N. Offorka</h1><p>SpeakOut</p></section>
-      <button class="theme-pill" id="themeBtn" type="button"><span>🌙</span><b>Theme</b></button>
-    </header>
+  <main class="page" id="app">
+    <div class="bg bg-base"></div><div class="bg bg-portrait"></div><div class="bg bg-depth"></div><div class="bg bg-stars"></div><div class="bg bg-aurora"></div>
 
-    <section class="glass-card page-hero">
-      <h2>Changing conversations. Changing lives.</h2>
-      <p>SpeakOut Mental Health Outreach exists to make mental health education practical, accessible, and community-driven across schools and communities.</p>
+    <section class="page-shell">
+      <header class="page-top">
+        <a class="back" href="index.html" aria-label="Back home">‹</a>
+        <div class="page-title"><h1>Jerry Nnamdi Offorka</h1><p>SpeakOut</p></div>
+        <button class="top-icon theme-trigger" id="themeTrigger" type="button">🌙</button>
+      </header>
+
+      <article class="hero-card">
+        <h2>Changing conversations. Changing lives.</h2>
+        <p>SpeakOut Mental Health Outreach exists to make mental health education practical, accessible, and community-driven. It connects schools, young people, families, partners, and communities to awareness, advocacy, early support, and hope.</p>
+      </article>
+
+      <article class="content-card">
+        <h3>What this means</h3>
+        <ul><li>MindCheck for self-reflection.</li><li>School and youth outreach programmes.</li><li>Partnerships, volunteers, and donations.</li></ul>
+      </article>
+
+      <section class="action-grid">
+        <button data-open-ai type="button">Speak to Jerry AI</button>
+        <a href="https://mindcheck.speakoutmentalhealth.org/" target="_blank" rel="noopener">MindCheck</a>
+        <a href="booking.html">Book Session</a>
+        <button data-donate type="button">Donate</button>
+      </section>
     </section>
 
-    <section class="quick-cards page-actions">
-      <a class="quick-card blue" href="#" data-open-ai><b>Jerry+ AI</b><span>Ask for guidance</span></a>
-      <a class="quick-card green" href="https://mindcheck.speakoutmentalhealth.org/" target="_blank"><b>MindCheck</b><span>Start assessment</span></a>
-      <a class="quick-card gold" href="#" data-donate><b>Donate</b><span>Support mission</span></a>
-      <a class="quick-card purple" href="booking.html"><b>Book</b><span>Reserve session</span></a>
-    </section>
-
-    <nav class="bottom-nav">
-      <a href="index.html"><svg viewBox="0 0 24 24"><path d="M3 10.8 12 3l9 7.8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg><span>Home</span></a>
+    <nav class="dock" aria-label="Primary navigation">
       <a href="about.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.8-4.2 5-6 8-6s6.2 1.8 8 6"/></svg><span>About</span></a>
-      <button class="nav-ai" data-open-ai type="button"><svg viewBox="0 0 24 24"><path d="m12 3 2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4z"/></svg></button>
-      <a href="journal.html"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v18H6.5A2.5 2.5 0 0 1 4 18.5z"/><path d="M8 7h8M8 11h8"/></svg><span>Journal</span></a>
+      <a href="speakout.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14 0 18M12 3c-3 3.5-3 14 0 18"/></svg><span>SpeakOut</span></a>
+      <a class="home-dot" href="index.html"><svg viewBox="0 0 24 24"><path d="M3 10.8 12 3l9 7.8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg><span>Home</span></a>
+      <button data-open-ai type="button"><svg viewBox="0 0 24 24"><path d="M12 3v3"/><rect x="5" y="7" width="14" height="11" rx="4"/><path d="M9 12h.01M15 12h.01M9 16h6"/></svg><span>Jerry AI</span></button>
       <a href="contact.html"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg><span>Contact</span></a>
     </nav>
-    <section class="ai-modal" id="aiModal" aria-hidden="true"><button class="modal-backdrop" data-close-ai></button><div class="ai-card"><button class="modal-close" data-close-ai>×</button><div class="ai-avatar">JO</div><h2>Jerry+ AI</h2><p>Ask about wellbeing, leadership, MindCheck, SpeakOut, booking, or support.</p><div class="ai-messages" id="aiMessages"><div class="ai-message assistant">Welcome. I’m Jerry+. How can I support you today?</div></div><form class="ai-form" id="aiForm"><textarea id="aiQuestion" rows="3" placeholder="Type your question..."></textarea><button class="send-btn" type="submit">Send</button></form></div></section>
+
+    <section class="ai-modal" id="aiModal" aria-hidden="true">
+      <button class="modal-backdrop" data-close-ai type="button"></button>
+      <article class="ai-card">
+        <button class="modal-close" data-close-ai type="button">×</button>
+        <div class="ai-avatar">JO</div><h2>Jerry+ AI</h2>
+        <p>Ask about wellbeing, leadership, MindCheck, SpeakOut, booking, speaking, or support.</p>
+        <div class="ai-messages" id="aiMessages"><div class="ai-message assistant">Welcome. I’m Jerry+. How can I support you today?</div></div>
+        <form class="ai-form" id="aiForm"><textarea id="aiQuestion" rows="3" placeholder="Type your question..."></textarea><button class="send-btn" type="submit">Send</button></form>
+      </article>
+    </section>
   </main>
   <script src="js/main.js"></script>
 </body>
