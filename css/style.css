@@ -168,3 +168,119 @@ html[data-theme="day"] .dock{background:rgba(255,255,255,.68);color:#111827}
 @media(min-width:800px){.content-grid{grid-template-columns:repeat(2,1fr)}.page{padding-left:36px;padding-right:36px}}
 
 @keyframes stars{to{transform:translateY(-42px)}}@keyframes beam{to{transform:translateX(24px) rotate(2deg)}}@keyframes introPop{from{opacity:0;transform:translateY(20px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}@keyframes introText{to{opacity:1}}@keyframes glow{to{opacity:.9;transform:scale(1.04)}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes spinReverse{to{transform:rotate(-360deg)}}@keyframes orbitA{from{transform:rotate(0deg) translateX(calc(var(--size)/2 + 18px)) rotate(0deg)}to{transform:rotate(360deg) translateX(calc(var(--size)/2 + 18px)) rotate(-360deg)}}@keyframes pulse{50%{transform:scale(1.35);opacity:.65}}@keyframes sphereFloat{0%,100%{translate:0 0;filter:saturate(1)}50%{translate:0 -7px;filter:saturate(1.16)}}@keyframes shine{0%{transform:translateX(-120%) rotate(10deg);opacity:0}35%{opacity:1}100%{transform:translateX(120%) rotate(10deg);opacity:0}}@keyframes halo{0%,100%{transform:scale(.88);opacity:.14}50%{transform:scale(1.16);opacity:.45}}
+
+
+/* ==========================================================
+   FINAL POLISH PATCH
+   - Stronger label background on center portrait
+   - Single tap to call
+   - More analog/joystick physical appearance
+   - More calm user-facing page language
+========================================================== */
+
+.joystick{
+  overflow:visible;
+  isolation:isolate;
+}
+
+.joystick::before{
+  content:"";
+  position:absolute;
+  inset:-16px;
+  z-index:-2;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 35% 25%,rgba(255,255,255,.18),transparent 24%),
+    radial-gradient(circle at 50% 72%,rgba(0,0,0,.54),transparent 55%),
+    linear-gradient(145deg,rgba(255,255,255,.12),rgba(6,12,27,.88));
+  box-shadow:
+    inset 0 2px 8px rgba(255,255,255,.12),
+    inset 0 -22px 38px rgba(0,0,0,.50),
+    0 22px 46px rgba(0,0,0,.46),
+    0 0 44px rgba(66,182,255,.22);
+  pointer-events:none;
+}
+
+.joystick::after{
+  content:"";
+  position:absolute;
+  inset:-7px;
+  z-index:-1;
+  border-radius:50%;
+  border:1px solid rgba(248,201,106,.34);
+  background:
+    radial-gradient(circle at 50% 50%,transparent 60%,rgba(248,201,106,.10) 61%,transparent 72%);
+  box-shadow:
+    inset 0 0 24px rgba(248,201,106,.14),
+    0 0 20px rgba(248,201,106,.16);
+  pointer-events:none;
+}
+
+.analog-base{
+  position:absolute;
+  inset:-22px;
+  z-index:-3;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 50% 50%,rgba(255,255,255,.10),transparent 44%),
+    radial-gradient(circle at 50% 58%,rgba(0,0,0,.58),transparent 64%);
+  filter:blur(.2px);
+  pointer-events:none;
+}
+
+.joy-copy{
+  bottom:13px;
+  width:84%;
+  padding:10px 12px 11px;
+  border-radius:20px;
+  background:
+    linear-gradient(180deg,rgba(4,8,18,.78),rgba(4,8,18,.54)),
+    radial-gradient(circle at 50% 0,rgba(248,201,106,.15),transparent 60%);
+  border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(18px) saturate(170%);
+  -webkit-backdrop-filter:blur(18px) saturate(170%);
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.45),
+    inset 0 1px rgba(255,255,255,.12);
+}
+
+.joy-copy strong{
+  display:block;
+  color:#fff;
+  text-shadow:0 3px 14px rgba(0,0,0,.80);
+}
+
+.joy-copy small{
+  display:block;
+  color:#f0f7ff;
+  margin-top:4px;
+  text-shadow:0 2px 10px rgba(0,0,0,.82);
+}
+
+.joystick:active::before{
+  transform:scale(.98);
+  box-shadow:
+    inset 0 3px 10px rgba(255,255,255,.12),
+    inset 0 -18px 34px rgba(0,0,0,.56),
+    0 14px 36px rgba(0,0,0,.42),
+    0 0 54px rgba(66,182,255,.30);
+}
+
+html[data-theme="day"] .joy-copy{
+  background:
+    linear-gradient(180deg,rgba(14,23,38,.78),rgba(14,23,38,.58)),
+    radial-gradient(circle at 50% 0,rgba(248,201,106,.14),transparent 62%);
+  border-color:rgba(255,255,255,.22);
+}
+
+html[data-theme="day"] .joystick::before{
+  background:
+    radial-gradient(circle at 35% 25%,rgba(255,255,255,.50),transparent 24%),
+    radial-gradient(circle at 50% 72%,rgba(90,106,130,.20),transparent 55%),
+    linear-gradient(145deg,rgba(255,255,255,.86),rgba(216,226,240,.78));
+  box-shadow:
+    inset 0 2px 10px rgba(255,255,255,.54),
+    inset 0 -18px 34px rgba(100,116,139,.20),
+    0 20px 44px rgba(31,41,55,.18),
+    0 0 34px rgba(8,120,223,.14);
+}
