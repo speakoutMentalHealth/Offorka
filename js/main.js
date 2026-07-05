@@ -145,14 +145,7 @@ if(joystick){
     joystick.style.transform = "translate3d(0,0,0) rotateX(0deg) rotateY(0deg)";
 
     if(distance < 12){
-      const now = Date.now();
-      if(now - lastTap < 460){
-        location.href = CALL_LINK;
-      }else{
-        lastTap = now;
-        if(joyCopy) joyCopy.innerHTML = `<strong>Tap Again</strong><small>to call now</small>`;
-        setTimeout(resetCopy, 1150);
-      }
+      location.href = CALL_LINK;
       return;
     }
 
