@@ -1,31 +1,10 @@
-# OFFORKA OS v5.4 — Pages Bundle
+# OFFORKA OS Final Production
 
-## Structure
-- `index.html` uses standalone files:
-  - `css/home.css`
-  - `js/home.js`
-
-- All other pages use shared files:
-  - `css/style.css`
-  - `js/main.js`
-
-This means homepage changes will not break the inner pages.
-
-## Included inner pages
-- about.html
-- speaking.html
-- consulting.html
-- media.html
-- speakout.html
-- booking.html
-- contact.html
-
-## Active integrations
-- MindCheck: https://mindcheck.speakoutmentalhealth.org/
-- Donation: https://paystack.shop/pay/speakout-donate
-- Jerry+ AI endpoint: https://us-central1-speaakout-portal.cloudfunctions.net/askJerry
-
-## Required images
-Put these in `/images`:
-- `jerry-profile.jpg`
-- `jerry-background.webp`
+- Homepage isolated: index.html, css/home.css, js/home.js
+- Inner pages shared: css/style.css, js/main.js
+- Four-dot menu fixed
+- Jerry+ AI modal included
+- Paystack donation connected
+- MindCheck connected
+- Each page has user-facing premium content
+- Required images: images/jerry-profile.jpg and images/jerry-background.webp
