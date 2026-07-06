@@ -1,0 +1,232 @@
+.paid-services{position:relative;z-index:5;max-width:1120px;margin:16px auto 0;display:grid;gap:14px}.paid-card{position:relative;overflow:hidden;min-height:320px;border:1px solid var(--line);border-radius:30px;padding:24px;background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.12),transparent 30%),var(--panel);backdrop-filter:blur(30px) saturate(170%);box-shadow:0 28px 90px rgba(0,0,0,.32),inset 0 1px rgba(255,255,255,.10);display:flex;flex-direction:column}.paid-card.premium{border-color:rgba(248,201,106,.40);box-shadow:0 30px 100px rgba(0,0,0,.34),0 0 48px rgba(248,201,106,.14),inset 0 1px rgba(255,255,255,.12)}.paid-card span{color:var(--gold);text-transform:uppercase;letter-spacing:.14em;font-weight:900;font-size:.7rem}.paid-card h3{margin:16px 0 10px;font-size:clamp(1.6rem,7vw,2.6rem);line-height:.96;letter-spacing:-.06em}.paid-card p{color:var(--muted);line-height:1.65;margin:0 0 24px}.paid-card strong{margin-top:auto;display:block;font-size:2rem;letter-spacing:-.06em;color:var(--text)}.paid-card small{display:block;color:var(--muted);font-weight:800;margin-top:4px}.paid-card button,.paid-card a{margin-top:18px;min-height:56px;border:0;border-radius:20px;background:linear-gradient(135deg,var(--gold),#fff);color:#07111f;font-weight:900;display:grid;place-items:center;text-align:center}.quote-card a{background:rgba(255,255,255,.08);color:var(--text);border:1px solid var(--line)}.booking-modal{position:fixed;inset:0;z-index:120;opacity:0;pointer-events:none;transition:.25s ease}.booking-modal.open{opacity:1;pointer-events:auto}.booking-backdrop{position:absolute;inset:0;border:0;background:rgba(0,0,0,.64);backdrop-filter:blur(18px)}.booking-panel{position:absolute;left:50%;bottom:calc(18px + var(--safe-bottom));width:min(92vw,520px);transform:translate(-50%,30px) scale(.96);transition:.25s ease;border:1px solid var(--line);border-radius:32px;background:rgba(7,12,27,.94);color:#fff;padding:24px;box-shadow:0 40px 130px rgba(0,0,0,.66)}.booking-modal.open .booking-panel{transform:translate(-50%,0) scale(1)}.booking-close{position:absolute;right:16px;top:14px;width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.08);color:#fff;font-size:1.4rem}.booking-panel h2{margin:14px 0 8px;font-size:2.2rem;line-height:.96;letter-spacing:-.06em}.booking-panel>p{color:#d8e6f8;font-weight:800}.booking-warning{border:1px solid rgba(248,201,106,.22);border-radius:22px;background:rgba(248,201,106,.08);padding:16px;margin:18px 0}.booking-warning strong{color:var(--gold)}.booking-warning p{color:#d8e6f8;line-height:1.55;margin:8px 0 0}html[data-theme=day] .booking-panel{background:rgba(14,23,38,.94)}@media(min-width:780px){.paid-services{grid-template-columns:repeat(2,1fr)}}@media(min-width:1080px){.paid-services{grid-template-columns:repeat(4,1fr)}.paid-card{min-height:390px}}
+
+
+/* ==========================================================
+   OFFORKA OS v6.0 PRODUCTION DESIGN SYSTEM
+   Additive production patch: premium mobile-first OS feel.
+========================================================== */
+
+:root{
+  --os-radius-xl:34px;
+  --os-radius-lg:28px;
+  --os-radius-md:20px;
+  --os-blur:blur(30px) saturate(170%);
+  --os-ease:cubic-bezier(.18,.9,.22,1.15);
+  --os-shadow:0 28px 90px rgba(0,0,0,.34);
+}
+
+/* Premium tap physics */
+a, button{
+  -webkit-user-select:none;
+  user-select:none;
+}
+
+.btn,
+.paid-card button,
+.paid-card a,
+.dock a,
+.dock button,
+.service,
+.jerry-ai,
+.top-action,
+.back-btn,
+.page-theme{
+  transition:
+    transform .18s var(--os-ease),
+    box-shadow .18s ease,
+    filter .18s ease,
+    background .18s ease;
+}
+
+.btn:active,
+.paid-card button:active,
+.paid-card a:active,
+.dock a:active,
+.dock button:active,
+.jerry-ai:active,
+.top-action:active,
+.back-btn:active,
+.page-theme:active{
+  transform:scale(.965) translateY(2px);
+  filter:brightness(1.12) saturate(1.08);
+}
+
+.service:active{
+  filter:brightness(1.18) saturate(1.25);
+}
+
+/* Accessible focus */
+:focus-visible{
+  outline:2px solid var(--gold);
+  outline-offset:4px;
+}
+
+/* Stronger day mode visibility */
+html[data-theme=day] .dock,
+html[data-theme=day] .drawer-panel,
+html[data-theme=day] .glass,
+html[data-theme=day] .paid-card{
+  background:rgba(246,249,253,.78);
+  border-color:rgba(20,31,48,.13);
+  box-shadow:
+    0 24px 54px rgba(31,49,73,.16),
+    inset 0 1px rgba(255,255,255,.72);
+}
+
+html[data-theme=day] .dock a,
+html[data-theme=day] .dock button{
+  color:#6b7c94;
+}
+
+html[data-theme=day] .dock .active{
+  color:var(--blue);
+  background:linear-gradient(180deg,rgba(4,119,223,.18),rgba(4,119,223,.045));
+}
+
+html[data-theme=day] .scene-image{
+  opacity:.28;
+  filter:blur(.45px) saturate(.82) contrast(1.05) brightness(1.04);
+}
+
+/* Mobile cinematic background compression */
+@media(max-width:600px){
+  .scene-image{
+    background:
+      linear-gradient(
+        90deg,
+        rgba(0,0,0,.72) 0%,
+        rgba(0,0,0,.30) 32%,
+        rgba(0,0,0,.12) 52%,
+        rgba(0,0,0,.36) 74%,
+        rgba(0,0,0,.72) 100%
+      ),
+      url('../images/jerry-background.webp') !important;
+    background-repeat:no-repeat !important;
+    background-size:185% auto !important;
+    background-position:center 42% !important;
+    opacity:.58 !important;
+    filter:contrast(1.16) saturate(1.14) brightness(.92) !important;
+  }
+
+  .scene-vignette{
+    background:
+      radial-gradient(circle at 50% 47%,transparent 0 38%,rgba(0,0,0,.14) 62%,rgba(0,0,0,.54) 100%),
+      linear-gradient(180deg,rgba(0,0,0,.05) 0%,rgba(0,0,0,.05) 42%,rgba(0,0,0,.38) 100%) !important;
+  }
+
+  .scene-stars{ opacity:.20 !important; }
+  .scene-light{ opacity:.95 !important; }
+}
+
+@media(max-width:600px) and (max-height:760px){
+  .scene-image{
+    background-size:172% auto !important;
+    background-position:center 45% !important;
+  }
+}
+
+@media(max-width:600px) and (min-height:761px){
+  .scene-image{
+    background-size:190% auto !important;
+    background-position:center 41% !important;
+  }
+}
+
+@media(min-width:900px){
+  .scene-image{
+    background-size:cover !important;
+    background-position:center 38% !important;
+    opacity:.44 !important;
+  }
+}
+
+/* Drawer feels like an OS control center */
+.drawer-panel{
+  max-width:540px;
+  margin:0 auto;
+}
+
+.drawer-panel a,
+.drawer-panel button{
+  justify-content:space-between;
+}
+
+.drawer-panel a::after,
+.drawer-panel button::after{
+  content:"›";
+  opacity:.55;
+  font-size:1.4rem;
+}
+
+/* Jerry+ modal refinement */
+.ai-card{
+  backdrop-filter:var(--os-blur);
+  -webkit-backdrop-filter:var(--os-blur);
+}
+
+.ai-avatar{
+  box-shadow:
+    0 0 0 7px rgba(67,184,255,.10),
+    0 0 34px rgba(248,201,106,.20);
+}
+
+/* Booking final polish */
+.paid-card{
+  isolation:isolate;
+}
+
+.paid-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(140deg,rgba(255,255,255,.13),transparent 34%,rgba(255,255,255,.05));
+  opacity:.75;
+  pointer-events:none;
+  z-index:-1;
+}
+
+.paid-card.premium::before{
+  content:"Recommended";
+  position:absolute;
+  right:18px;
+  top:18px;
+  padding:7px 10px;
+  border-radius:999px;
+  background:rgba(248,201,106,.16);
+  border:1px solid rgba(248,201,106,.26);
+  color:var(--gold);
+  font-size:.62rem;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+/* Compact mobile pages */
+@media(max-width:430px){
+  .page-brand h1,
+  .brand h1{
+    font-size:1.02rem !important;
+  }
+
+  .page-brand p,
+  .brand p{
+    font-size:.48rem !important;
+  }
+
+  .hero h2{
+    font-size:2.35rem !important;
+  }
+
+  .paid-card{
+    min-height:280px;
+  }
+}
+
+/* Respect reduced motion */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation:none !important;
+    transition:none !important;
+    scroll-behavior:auto !important;
+  }
+}
