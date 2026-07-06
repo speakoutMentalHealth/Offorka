@@ -200,3 +200,100 @@ html[data-theme=day] .scene-base{background:radial-gradient(circle at 50% 34%,rg
 
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes spinReverse{to{transform:rotate(-360deg)}}
+/* =====================================================
+   FINAL MOBILE BACKGROUND CORRECTION
+   Shows city + Jerry face + reflection + clouds on mobile
+===================================================== */
+
+.scene-image{
+  z-index:-11;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.72) 0%,
+      rgba(0,0,0,.30) 32%,
+      rgba(0,0,0,.12) 52%,
+      rgba(0,0,0,.36) 74%,
+      rgba(0,0,0,.72) 100%
+    ),
+    url('../images/jerry-background.webp');
+
+  background-repeat:no-repeat;
+  background-size:150% auto;
+  background-position:center 42%;
+  opacity:.50;
+  filter:contrast(1.14) saturate(1.12) brightness(.92);
+}
+
+/* Mobile: pull the background back so landscape shows */
+@media(max-width:600px){
+  .scene-image{
+    background-size:185% auto;
+    background-position:center 42%;
+    opacity:.58;
+    filter:contrast(1.16) saturate(1.14) brightness(.92);
+  }
+
+  .scene-vignette{
+    background:
+      radial-gradient(
+        circle at 50% 47%,
+        transparent 0 38%,
+        rgba(0,0,0,.14) 62%,
+        rgba(0,0,0,.54) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(0,0,0,.05) 0%,
+        rgba(0,0,0,.05) 42%,
+        rgba(0,0,0,.38) 100%
+      );
+  }
+
+  .scene-stars{
+    opacity:.20;
+  }
+
+  .scene-light{
+    opacity:.95;
+  }
+}
+
+/* Short phones */
+@media(max-width:600px) and (max-height:760px){
+  .scene-image{
+    background-size:172% auto;
+    background-position:center 45%;
+  }
+}
+
+/* Tall phones */
+@media(max-width:600px) and (min-height:761px){
+  .scene-image{
+    background-size:190% auto;
+    background-position:center 41%;
+  }
+}
+
+/* Laptop/Desktop: wider cinematic view */
+@media(min-width:900px){
+  .scene-image{
+    background-size:cover;
+    background-position:center 38%;
+    opacity:.44;
+  }
+}
+
+/* Day mode: keep image visible but soft */
+html[data-theme=day] .scene-image{
+  opacity:.28;
+  filter:blur(.5px) saturate(.78) contrast(1.05) brightness(1.04);
+}
+
+@media(max-width:600px){
+  html[data-theme=day] .scene-image{
+    opacity:.34;
+    background-size:185% auto;
+    background-position:center 41%;
+  }
+}
