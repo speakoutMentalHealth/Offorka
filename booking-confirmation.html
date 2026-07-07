@@ -1,1 +1,154 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="stylesheet" href="css/style.css"><title>Payment Confirmed | OFFORKA OS</title></head><body><main class="inner-app"><div class="scene scene-base"></div><div class="scene scene-image"></div><div class="scene scene-stars"></div><div class="scene scene-light"></div><div class="scene scene-vignette"></div><section class="page-shell"><article class="hero glass"><div class="hero-inner"><div><span class="eyebrow">Payment Received</span><h2>Now choose your appointment time.</h2><p>Thank you. Your payment has been submitted. Please select a suitable time below to complete your booking.</p><div class="actions"><a class="btn primary" href="PASTE_CALENDLY_OR_GOOGLE_CALENDAR_BOOKING_LINK_HERE" target="_blank" rel="noopener">Choose Appointment Time</a><a class="btn" href="contact.html">Contact Support</a></div></div></div></article></section></main></body></html>
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<title>Payment Successful | OFFORKA OS</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<main class="inner-app">
+
+    <div class="scene scene-base"></div>
+    <div class="scene scene-image"></div>
+    <div class="scene scene-stars"></div>
+    <div class="scene scene-light"></div>
+    <div class="scene scene-vignette"></div>
+
+    <section class="page-shell">
+
+        <article class="hero glass">
+
+            <div class="hero-inner">
+
+                <div style="text-align:center;max-width:700px;margin:auto;">
+
+                    <div style="
+                        width:120px;
+                        height:120px;
+                        margin:auto;
+                        border-radius:50%;
+                        display:grid;
+                        place-items:center;
+                        background:linear-gradient(135deg,#1fd67a,#18b65f);
+                        color:white;
+                        font-size:58px;
+                        box-shadow:
+                        0 0 45px rgba(31,214,122,.45),
+                        inset 0 0 20px rgba(255,255,255,.2);
+                    ">
+                        ✓
+                    </div>
+
+                    <br><br>
+
+                    <span class="eyebrow">
+                        PAYMENT SUCCESSFUL
+                    </span>
+
+                    <h1>
+                        Thank You!
+                    </h1>
+
+                    <h2>
+                        Your consultation payment has been received successfully.
+                    </h2>
+
+                    <p style="font-size:18px;line-height:1.8;max-width:620px;margin:auto;">
+
+                        Thank you for booking a consultation with
+                        <strong>Jerry Nnamdi Offorka.</strong>
+
+                        <br><br>
+
+                        Your payment has been confirmed.
+
+                        <br><br>
+
+                        The final step is to choose your preferred meeting date and time.
+
+                    </p>
+
+                    <br><br>
+
+                    <div class="actions">
+
+                        <a
+                            class="btn primary"
+                            href="https://calendly.com/speaaakout/new-meeting"
+                            target="_blank"
+                            rel="noopener">
+
+                            📅 Schedule My Appointment
+
+                        </a>
+
+                        <a
+                            class="btn"
+                            href="index.html">
+
+                            🏠 Return Home
+
+                        </a>
+
+                    </div>
+
+                    <br><br>
+
+                    <p style="opacity:.8;font-size:15px;">
+
+                        Redirecting you to the booking calendar in
+                        <span id="countdown">4</span>
+                        seconds...
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+</main>
+
+<script>
+
+let seconds = 4;
+
+const countdown = document.getElementById("countdown");
+
+const timer = setInterval(() => {
+
+    seconds--;
+
+    if(countdown){
+
+        countdown.textContent = seconds;
+
+    }
+
+    if(seconds <= 0){
+
+        clearInterval(timer);
+
+        window.location.href =
+        "https://calendly.com/speaaakout/new-meeting";
+
+    }
+
+},1000);
+
+</script>
+
+</body>
+
+</html>
