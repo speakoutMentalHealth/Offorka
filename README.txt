@@ -1,0 +1,1 @@
+Premium clean pages v8. Replace about.html, media.html, speakout.html, and contact.html. Uses existing css/style.css and js/main.js only. No user-facing backend instructions included.
