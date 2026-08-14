@@ -1,9 +1,17 @@
 {
-  "name": "OFFORKA OS",
-  "short_name": "OFFORKA",
+  "name": "Jerry Nnamdi Offorka",
+  "short_name": "Jerry Offorka",
+  "description": "An interactive personal experience for mental health, leadership, speaking and social impact.",
+  "id": "./",
   "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "portrait-primary",
   "background_color": "#020611",
   "theme_color": "#020611",
-  "icons": []
+  "icons": [
+    {"src":"images/app-icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"images/app-icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  ]
 }
