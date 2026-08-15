@@ -15,3 +15,42 @@
 /* Precision portfolio layer */
 .authority-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:15px 0 12px}.authority-grid div{padding:12px 10px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025));box-shadow:inset 0 1px rgba(255,255,255,.08)}.authority-grid strong{display:block;color:var(--gold);font-size:.69rem;text-transform:uppercase;letter-spacing:.08em}.authority-grid small{display:block;margin-top:5px;color:rgba(255,255,255,.66);font-size:.58rem;line-height:1.35}.work-list{display:grid;gap:9px}.work-list>div{display:grid;grid-template-columns:32px 1fr;gap:10px;align-items:start;padding:11px 12px;border-radius:15px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07)}.work-list i{width:29px;height:29px;border-radius:10px;display:grid;place-items:center;font-style:normal;font-size:.52rem;font-weight:900;color:var(--gold);background:rgba(244,198,107,.08);border:1px solid rgba(244,198,107,.18)}.work-list p{margin:0}.work-list b,.work-list small{display:block}.work-list b{font-size:.72rem}.work-list small{margin-top:3px;color:rgba(255,255,255,.58);font-size:.59rem;line-height:1.4}.credential-lock{padding:14px;border-radius:17px;border:1px solid rgba(244,198,107,.16);background:linear-gradient(135deg,rgba(244,198,107,.07),rgba(255,255,255,.025))}.credential-lock b{color:#fff;font-size:.75rem}.credential-lock p{font-size:.64rem!important;line-height:1.5!important;margin:6px 0 9px!important}.credential-lock a{color:var(--gold);font-size:.63rem;font-weight:800}.profile-card::before{content:"";position:absolute;left:12%;right:12%;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),var(--cyan),transparent);opacity:.65}.profile-actions a{position:relative;overflow:hidden}.profile-actions a::after{content:"";position:absolute;inset:-100% -30%;background:linear-gradient(110deg,transparent 40%,rgba(255,255,255,.18) 50%,transparent 60%);transform:translateX(-55%);transition:transform .7s ease}.profile-actions a:hover::after{transform:translateX(55%)}
 @media(max-width:380px){.authority-grid{grid-template-columns:1fr}.authority-grid div{padding:10px 12px}}
+
+
+/* === Motion & theme restoration — autonomous orbital experience === */
+.theme-btn{justify-self:end;color:var(--gold);font-weight:800;font-size:1.2rem;display:grid;place-items:center;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,color .25s ease}.theme-btn:active{transform:scale(.94)}.theme-glyph{display:grid;place-items:center;width:27px;height:27px;border:1px solid currentColor;border-radius:50%;font-size:1rem;line-height:1;box-shadow:0 0 18px color-mix(in srgb,currentColor 32%,transparent)}
+
+/* The four spheres continuously orbit Jerry. Labels remain upright. */
+.orb{left:50%!important;top:50%!important;right:auto!important;bottom:auto!important;will-change:transform,filter;transform-origin:center}
+.orb-up{animation:orbitSphereUp 28s linear infinite,orbBreathe 5.5s ease-in-out infinite;color:var(--blue)}
+.orb-right{animation:orbitSphereRight 28s linear infinite,orbBreathe 5.5s ease-in-out infinite -2.6s;color:var(--violet)}
+.orb-down{animation:orbitSphereDown 28s linear infinite,orbBreathe 5.5s ease-in-out infinite -3.8s;color:var(--gold)}
+.orb-left{animation:orbitSphereLeft 28s linear infinite,orbBreathe 5.5s ease-in-out infinite -1.3s;color:var(--green)}
+.hub.engaging .orb{animation-play-state:paused}
+
+@keyframes orbitSphereUp{from{transform:translate(-50%,-50%) rotate(0deg) translateY(calc(var(--size)*-.47)) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg) translateY(calc(var(--size)*-.47)) rotate(-360deg)}}
+@keyframes orbitSphereRight{from{transform:translate(-50%,-50%) rotate(90deg) translateY(calc(var(--size)*-.47)) rotate(-90deg)}to{transform:translate(-50%,-50%) rotate(450deg) translateY(calc(var(--size)*-.47)) rotate(-450deg)}}
+@keyframes orbitSphereDown{from{transform:translate(-50%,-50%) rotate(180deg) translateY(calc(var(--size)*-.47)) rotate(-180deg)}to{transform:translate(-50%,-50%) rotate(540deg) translateY(calc(var(--size)*-.47)) rotate(-540deg)}}
+@keyframes orbitSphereLeft{from{transform:translate(-50%,-50%) rotate(270deg) translateY(calc(var(--size)*-.47)) rotate(-270deg)}to{transform:translate(-50%,-50%) rotate(630deg) translateY(calc(var(--size)*-.47)) rotate(-630deg)}}
+
+/* Rich atmospheric motion. */
+.bg-smoke{will-change:transform,opacity,filter}.smoke-a{animation:smokeFlowA 17s ease-in-out infinite alternate!important}.smoke-b{animation:smokeFlowB 23s ease-in-out infinite alternate!important}.bg-aurora{animation:auroraFlow 12s ease-in-out infinite alternate!important}.bg-stars{animation:starsFlow 62s linear infinite!important}.ring-outer{animation:spinReverse 44s linear infinite!important}.ring-main{animation:spin 14s linear infinite!important}.ring-soft{animation:spinReverse 27s linear infinite!important}.ring-gold{animation:spin 19s linear infinite!important}.dot-one{animation:orbit 8s linear infinite!important}.dot-two{animation:orbit 12s linear infinite reverse!important}.dot-three{animation:orbitInner 9s linear infinite!important}.s1{animation:orbitInner 5s linear infinite!important}.s2{animation:orbitInner 7s linear infinite reverse!important}.s3{animation:orbit 13s linear infinite!important}.s4{animation:orbit 17s linear infinite reverse!important}
+@keyframes smokeFlowA{0%{transform:translate3d(-7%,3%,0) scale(1.03) rotate(-2deg);opacity:.17}45%{opacity:.31}100%{transform:translate3d(9%,-6%,0) scale(1.18) rotate(3deg);opacity:.23}}
+@keyframes smokeFlowB{0%{transform:translate3d(8%,-5%,0) scale(1.12) rotate(2deg);opacity:.13}52%{opacity:.27}100%{transform:translate3d(-10%,7%,0) scale(1.02) rotate(-3deg);opacity:.25}}
+@keyframes auroraFlow{0%{opacity:.48;transform:translate3d(-2%,1%,0) scale(1)}100%{opacity:.84;transform:translate3d(3%,-2%,0) scale(1.08)}}
+@keyframes starsFlow{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-20px,-58px,0)}}
+
+/* Respect accessibility without making the signature experience completely static. */
+@media(prefers-reduced-motion:reduce){.bg-smoke{display:block!important}.orb-up{animation:orbitSphereUp 70s linear infinite!important}.orb-right{animation:orbitSphereRight 70s linear infinite!important}.orb-down{animation:orbitSphereDown 70s linear infinite!important}.orb-left{animation:orbitSphereLeft 70s linear infinite!important}.ring-main{animation:spin 36s linear infinite!important}.ring-outer{animation:spinReverse 90s linear infinite!important}.ring-soft{animation:spinReverse 65s linear infinite!important}.ring-gold{animation:spin 54s linear infinite!important}.smoke-a{animation:smokeFlowA 40s ease-in-out infinite alternate!important}.smoke-b{animation:smokeFlowB 48s ease-in-out infinite alternate!important}.bg-aurora{animation:auroraFlow 34s ease-in-out infinite alternate!important}.bg-stars{animation:starsFlow 120s linear infinite!important}}
+
+/* Premium alternate visual atmosphere. */
+html[data-theme=day]{--bg:#eef3f8;--ink:#0b1726;--muted:#52667d;--gold:#ad761f;--blue:#178ed4;--cyan:#0aa5b8;--green:#21825a;--violet:#7953bb}
+html[data-theme=day] .bg-base{background:radial-gradient(circle at 50% 43%,rgba(63,156,208,.34),transparent 30%),radial-gradient(circle at 22% 66%,rgba(233,194,115,.18),transparent 30%),linear-gradient(180deg,#cddbe7,#e9f0f6 48%,#b9cad8)}
+html[data-theme=day] .bg-image{opacity:.23;filter:contrast(1.03) saturate(.82) brightness(1.15)}
+html[data-theme=day] .bg-vignette{background:radial-gradient(circle at 50% 48%,transparent 0 34%,rgba(245,249,252,.05) 48%,rgba(36,61,82,.28) 100%),linear-gradient(180deg,rgba(255,255,255,.18),transparent 35%,rgba(30,51,70,.14))}
+html[data-theme=day] .bg-stars{opacity:.14;filter:invert(.25)}
+html[data-theme=day] .bg-smoke{mix-blend-mode:multiply;opacity:.16}
+html[data-theme=day] .topbar .identity h1{color:#f9fcff;text-shadow:0 3px 15px rgba(7,16,29,.72)}
+html[data-theme=day] .topbar .identity small{color:rgba(255,255,255,.72)}
+html[data-theme=day] .icon-btn,html[data-theme=day] .dock,html[data-theme=day] .quick-actions,html[data-theme=day] .ask-jerry{background:linear-gradient(145deg,rgba(255,255,255,.38),rgba(9,25,43,.22));border-color:rgba(255,255,255,.32);box-shadow:inset 0 1px rgba(255,255,255,.45),0 16px 44px rgba(11,35,58,.18)}
+html[data-theme=day] .orb{box-shadow:inset 6px 8px 15px rgba(255,255,255,.25),inset -12px -17px 27px rgba(0,0,0,.52),0 18px 35px rgba(22,45,66,.25),0 0 28px color-mix(in srgb,currentColor 42%,transparent)}
