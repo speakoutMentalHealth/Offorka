@@ -54,3 +54,18 @@ html[data-theme=day] .topbar .identity h1{color:#f9fcff;text-shadow:0 3px 15px r
 html[data-theme=day] .topbar .identity small{color:rgba(255,255,255,.72)}
 html[data-theme=day] .icon-btn,html[data-theme=day] .dock,html[data-theme=day] .quick-actions,html[data-theme=day] .ask-jerry{background:linear-gradient(145deg,rgba(255,255,255,.38),rgba(9,25,43,.22));border-color:rgba(255,255,255,.32);box-shadow:inset 0 1px rgba(255,255,255,.45),0 16px 44px rgba(11,35,58,.18)}
 html[data-theme=day] .orb{box-shadow:inset 6px 8px 15px rgba(255,255,255,.25),inset -12px -17px 27px rgba(0,0,0,.52),0 18px 35px rgba(22,45,66,.25),0 0 28px color-mix(in srgb,currentColor 42%,transparent)}
+
+/* Intro motion resilience: preserve calm autonomous motion even when iOS Reduce Motion is enabled. */
+@media (prefers-reduced-motion: reduce){
+  .intro-stars{animation:stars 120s linear infinite!important}
+  .intro-smoke{animation:smokeA 38s ease-in-out infinite alternate!important}
+  .intro-beam{animation:beam 26s ease-in-out infinite alternate!important}
+  .intro-ring-a{animation:spin 70s linear infinite!important}
+  .intro-ring-b{animation:spinReverse 52s linear infinite!important}
+  .intro-ring-c{animation:spin 82s linear infinite!important}
+  .intro-dot-a{animation:introOrbit 28s linear infinite!important}
+  .intro-dot-b{animation:introOrbit 36s linear infinite reverse!important}
+  .intro-jo{animation:introJO 4.4s ease forwards!important}
+  .intro-person{animation:introPerson 4.4s ease forwards!important}
+  .intro-line{animation:introQuote 4.4s ease forwards!important}
+}
